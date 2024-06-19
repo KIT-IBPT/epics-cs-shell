@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+     Alarm configuration snapshot 2013/02/11 14:37:45.597000000
+     URL : jdbc:postgresql://ankasr-serv.anka-acc.kit.edu/css-alarm
+     Root: Accelerator
+  -->
+<config name="Accelerator">
+    <component name="Storage Ring">
+        <component name="BPM">
+            <component name="BPM S1.01">
+                <component name="Clock">
+                    <pv name="SR:BPM:S1:01:CK:MC_LOCK">
+                        <description>SR:BPM:S1:01:CK:MC_LOCK</description>
+                        <latching>true</latching>
+                    </pv>
+                    <pv name="SR:BPM:S1:01:CK:MC_SYNC">
+                        <description>SR:BPM:S1:01:CK:MC_SYNC</description>
+                        <enabled>false</enabled>
+                        <latching>true</latching>
+                    </pv>
+                    <pv name="SR:BPM:S1:01:CK:SC_LOCK">
+                        <description>SR:BPM:S1:01:CK:SC_LOCK</description>
+                        <enabled>false</enabled>
+                        <latching>true</latching>
+                    </pv>
+                    <pv name="SR:BPM:S1:01:CK:SC_SYNC">
+                        <description>SR:BPM:S1:01:CK:SC_SYNC</description>
+                        <enabled>false</enabled>
+                        <latching>true</latching>
+                    </pv>
+                </component>
+                <component name="Voltage">
+                    <pv name="SR:BPM:S1:01:SE:VOLT1">
+                        <description>SR:BPM:S1:01:SE:VOLT1</description>
+                        <latching>true</latching>
+                        <display>
+                            <title>BPM Panel</title>
+                            <details>SR/BPM/Main.opi</details>
+                        </display>
+                    </pv>
+                    <pv name="SR:BPM:S1:01:SE:VOLT2">
+                        <description>SR:BPM:SE:VOLT2</description>
+                        <latching>true</latching>
+                    </pv>
+                    <pv name="SR:BPM:S1:01:SE:VOLT3">
+                        <description>SR:BPM:S1:01:SE:VOLT3</description>
+                        <latching>true</latching>
+                    </pv>
+                    <pv name="SR:BPM:S1:01:SE:VOLT4">
+                        <description>SR:BPM:S1:01:SE:VOLT4</description>
+                        <latching>true</latching>
+                    </pv>
+                </component>
+            </component>
+        </component>
+        <component name="Power Supplies">
+            <component name="Bend">
+                <pv name="SR:PS:Bend:StatusCheck:Status">
+                    <description>SR Bend PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Q1">
+                <pv name="SR:PS:Q1:StatusCheck:Status">
+                    <description>SR Q1 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Q2">
+                <pv name="SR:PS:Q2:StatusCheck:Status">
+                    <description>SR Q2 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Q3">
+                <pv name="SR:PS:Q3:StatusCheck:Status">
+                    <description>SR Q3 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Q4">
+                <pv name="SR:PS:Q4:StatusCheck:Status">
+                    <description>SR Q4 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Q5">
+                <pv name="SR:PS:Q5:StatusCheck:Status">
+                    <description>SR Q5 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="SH">
+                <pv name="SR:PS:SH:StatusCheck:Status">
+                    <description>SR SH PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="SV">
+                <pv name="SR:PS:SV:StatusCheck:Status">
+                    <description>SR SV PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S1.01">
+                <pv name="SR:PS:HCM:S1:01:StatusCheck:Status">
+                    <description>SR HCM S1.01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S1.02">
+                <pv name="SR:PS:HCM:S1:02:StatusCheck:Status">
+                    <description>SR HCM S1.02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S1.03">
+                <pv name="SR:PS:HCM:S1:03:StatusCheck:Status">
+                    <description>SR HCM S1.03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S1.04">
+                <pv name="SR:PS:HCM:S1:04:StatusCheck:Status">
+                    <description>SR HCM S1.04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S1.06">
+                <pv name="SR:PS:HCM:S1:06:StatusCheck:Status">
+                    <description>SR HCM S1.06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S1.07">
+                <pv name="SR:PS:HCM:S1:07:StatusCheck:Status">
+                    <description>SR HCM S1.07 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S1.08">
+                <pv name="SR:PS:HCM:S1:08:StatusCheck:Status">
+                    <description>SR HCM S1.08 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S2.01">
+                <pv name="SR:PS:HCM:S2:01:StatusCheck:Status">
+                    <description>SR HCM S2.01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S2.02">
+                <pv name="SR:PS:HCM:S2:02:StatusCheck:Status">
+                    <description>SR HCM S2.02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S2.03">
+                <pv name="SR:PS:HCM:S2:03:StatusCheck:Status">
+                    <description>SR HCM S2.03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S2.04">
+                <pv name="SR:PS:HCM:S2:04:StatusCheck:Status">
+                    <description>SR HCM S2.04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S2.06">
+                <pv name="SR:PS:HCM:S2:06:StatusCheck:Status">
+                    <description>SR HCM S2.06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S2.07">
+                <pv name="SR:PS:HCM:S2:07:StatusCheck:Status">
+                    <description>SR HCM S2.07 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S2.08">
+                <pv name="SR:PS:HCM:S2:08:StatusCheck:Status">
+                    <description>SR HCM S2.08 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S3.01">
+                <pv name="SR:PS:HCM:S3:01:StatusCheck:Status">
+                    <description>SR HCM S3.01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S3.02">
+                <pv name="SR:PS:HCM:S3:02:StatusCheck:Status">
+                    <description>SR HCM S3.02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S3.03">
+                <pv name="SR:PS:HCM:S3:03:StatusCheck:Status">
+                    <description>SR HCM S3.03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S3.04">
+                <pv name="SR:PS:HCM:S3:04:StatusCheck:Status">
+                    <description>SR HCM S3.04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S3.06">
+                <pv name="SR:PS:HCM:S3:06:StatusCheck:Status">
+                    <description>SR HCM S3.06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S3.07">
+                <pv name="SR:PS:HCM:S3:07:StatusCheck:Status">
+                    <description>SR HCM S3.07 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S3.08">
+                <pv name="SR:PS:HCM:S3:08:StatusCheck:Status">
+                    <description>SR HCM S3.08 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S4.01">
+                <pv name="SR:PS:HCM:S4:01:StatusCheck:Status">
+                    <description>SR HCM S4.01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S4.02">
+                <pv name="SR:PS:HCM:S4:02:StatusCheck:Status">
+                    <description>SR HCM S4.02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S4.03">
+                <pv name="SR:PS:HCM:S4:03:StatusCheck:Status">
+                    <description>SR HCM S4.03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S4.04">
+                <pv name="SR:PS:HCM:S4:04:StatusCheck:Status">
+                    <description>SR HCM S4.04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S4.06">
+                <pv name="SR:PS:HCM:S4:06:StatusCheck:Status">
+                    <description>SR HCM S4.06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S4.07">
+                <pv name="SR:PS:HCM:S4:07:StatusCheck:Status">
+                    <description>SR HCM S4.07 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM S4.08">
+                <pv name="SR:PS:HCM:S4:08:StatusCheck:Status">
+                    <description>SR HCM S4.08 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S1.01">
+                <pv name="SR:PS:VCM:S1:01:StatusCheck:Status">
+                    <description>SR VCM S1.01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S1.02">
+                <pv name="SR:PS:VCM:S1:02:StatusCheck:Status">
+                    <description>SR VCM S1.02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S1.03">
+                <pv name="SR:PS:VCM:S1:03:StatusCheck:Status">
+                    <description>SR VCM S1.03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S1.04">
+                <pv name="SR:PS:VCM:S1:04:StatusCheck:Status">
+                    <description>SR VCM S1.04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S2.01">
+                <pv name="SR:PS:VCM:S2:01:StatusCheck:Status">
+                    <description>SR VCM S2.01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S2.02">
+                <pv name="SR:PS:VCM:S2:02:StatusCheck:Status">
+                    <description>SR VCM S2.02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S2.03">
+                <pv name="SR:PS:VCM:S2:03:StatusCheck:Status">
+                    <description>SR VCM S2.03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S2.04">
+                <pv name="SR:PS:VCM:S2:04:StatusCheck:Status">
+                    <description>SR VCM S2.04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S3.01">
+                <pv name="SR:PS:VCM:S3:01:StatusCheck:Status">
+                    <description>SR VCM S3.01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S3.02">
+                <pv name="SR:PS:VCM:S3:02:StatusCheck:Status">
+                    <description>SR VCM S3.02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S3.03">
+                <pv name="SR:PS:VCM:S3:03:StatusCheck:Status">
+                    <description>SR VCM S3.03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S3.04">
+                <pv name="SR:PS:VCM:S3:04:StatusCheck:Status">
+                    <description>SR VCM S3.04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S4.01">
+                <pv name="SR:PS:VCM:S4:01:StatusCheck:Status">
+                    <description>SR VCM S4.01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S4.02">
+                <pv name="SR:PS:VCM:S4:02:StatusCheck:Status">
+                    <description>SR VCM S4.02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S4.03">
+                <pv name="SR:PS:VCM:S4:03:StatusCheck:Status">
+                    <description>SR VCM S4.03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM S4.04">
+                <pv name="SR:PS:VCM:S4:04:StatusCheck:Status">
+                    <description>SR VCM S4.04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+        </component>
+    </component>
+    <component name="Booster">
+        <component name="Power Supplies">
+            <component name="Bend">
+                <pv name="BO:PS:Bend:StatusCheck:Status">
+                    <description>Booster Bend PS setpoint/readback mismatch</description>
+                    <enabled>false</enabled>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bump">
+                <pv name="BO:PS:Bump:StatusCheck:Status">
+                    <description>Booster Bump PS setpoint/readback mismatch</description>
+                    <enabled>false</enabled>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad">
+                <pv name="BO:PS:Q:StatusCheck:Status">
+                    <description>Booster Quad PS setpoint/readback mismatch</description>
+                    <enabled>false</enabled>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 01">
+                <pv name="BO:PS:HCM:01:StatusCheck:Status">
+                    <description>Booster HCM 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 02">
+                <pv name="BO:PS:HCM:02:StatusCheck:Status">
+                    <description>Booster HCM 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 03">
+                <pv name="BO:PS:HCM:03:StatusCheck:Status">
+                    <description>Booster HCM 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 04">
+                <pv name="BO:PS:HCM:04:StatusCheck:Status">
+                    <description>Booster HCM 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 01">
+                <pv name="BO:PS:VCM:01:StatusCheck:Status">
+                    <description>Booster VCM 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 02">
+                <pv name="BO:PS:VCM:02:StatusCheck:Status">
+                    <description>Booster VCM 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 03">
+                <pv name="BO:PS:VCM:03:StatusCheck:Status">
+                    <description>Booster VCM 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 04">
+                <pv name="BO:PS:VCM:04:StatusCheck:Status">
+                    <description>Booster VCM 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+        </component>
+    </component>
+    <component name="Microtron">
+        <component name="Power Supplies">
+            <component name="Bend 01">
+                <pv name="MI:PS:Bend:01:StatusCheck:Status">
+                    <description>Microtron Bend 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 02">
+                <pv name="MI:PS:Bend:02:StatusCheck:Status">
+                    <description>Microtron Bend 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 03">
+                <pv name="MI:PS:Bend:03:StatusCheck:Status">
+                    <description>Microtron Bend 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 04">
+                <pv name="MI:PS:Bend:04:StatusCheck:Status">
+                    <description>Microtron Bend 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 05">
+                <pv name="MI:PS:Bend:05:StatusCheck:Status">
+                    <description>Microtron Bend 05 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 06">
+                <pv name="MI:PS:Bend:06:StatusCheck:Status">
+                    <description>Microtron Bend 06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 07">
+                <pv name="MI:PS:Bend:07:StatusCheck:Status">
+                    <description>Microtron Bend 07 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 08">
+                <pv name="MI:PS:Bend:08:StatusCheck:Status">
+                    <description>Microtron Bend 08 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 10">
+                <pv name="MI:PS:Bend:10:StatusCheck:Status">
+                    <description>Microtron Bend 10 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 11">
+                <pv name="MI:PS:Bend:11:StatusCheck:Status">
+                    <description>Microtron Bend 11 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 01">
+                <pv name="MI:PS:HCM:01:StatusCheck:Status">
+                    <description>Microtron HCM 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 03">
+                <pv name="MI:PS:HCM:03:StatusCheck:Status">
+                    <description>Microtron HCM 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 04">
+                <pv name="MI:PS:HCM:04:StatusCheck:Status">
+                    <description>Microtron HCM 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 05">
+                <pv name="MI:PS:HCM:05:StatusCheck:Status">
+                    <description>Microtron HCM 05 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 06">
+                <pv name="MI:PS:HCM:06:StatusCheck:Status">
+                    <description>Microtron HCM 06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 07">
+                <pv name="MI:PS:HCM:07:StatusCheck:Status">
+                    <description>Microtron HCM 07 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 08">
+                <pv name="MI:PS:HCM:08:StatusCheck:Status">
+                    <description>Microtron HCM 08 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 09">
+                <pv name="MI:PS:HCM:09:StatusCheck:Status">
+                    <description>Microtron HCM 09 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 10">
+                <pv name="MI:PS:HCM:10:StatusCheck:Status">
+                    <description>Microtron HCM 10 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 01">
+                <pv name="MI:PS:VCM:01:StatusCheck:Status">
+                    <description>Microtron VCM 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 02">
+                <pv name="MI:PS:VCM:02:StatusCheck:Status">
+                    <description>Microtron VCM 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 03">
+                <pv name="MI:PS:VCM:03:StatusCheck:Status">
+                    <description>Microtron VCM 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 04">
+                <pv name="MI:PS:VCM:04:StatusCheck:Status">
+                    <description>Microtron VCM 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 05">
+                <pv name="MI:PS:VCM:05:StatusCheck:Status">
+                    <description>Microtron VCM 05 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 06">
+                <pv name="MI:PS:VCM:06:StatusCheck:Status">
+                    <description>Microtron VCM 06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 07">
+                <pv name="MI:PS:VCM:07:StatusCheck:Status">
+                    <description>Microtron VCM 07 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 08">
+                <pv name="MI:PS:VCM:08:StatusCheck:Status">
+                    <description>Microtron VCM 08 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 09">
+                <pv name="MI:PS:VCM:09:StatusCheck:Status">
+                    <description>Microtron VCM 09 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 10">
+                <pv name="MI:PS:VCM:10:StatusCheck:Status">
+                    <description>Microtron VCM 10 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 01">
+                <pv name="MI:PS:QV:01:StatusCheck:Status">
+                    <description>Microtron Quad 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 02">
+                <pv name="MI:PS:QV:02:StatusCheck:Status">
+                    <description>Microtron Quad 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Solenoid 01">
+                <pv name="MI:PS:SOL:01:StatusCheck:Status">
+                    <description>Microtron Solenoid 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Solenoid 02">
+                <pv name="MI:PS:SOL:02:StatusCheck:Status">
+                    <description>Microtron Solenoid 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Solenoid 03">
+                <pv name="MI:PS:SOL:03:StatusCheck:Status">
+                    <description>Microtron Solenoid 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+        </component>
+    </component>
+    <component name="TL Micr.-Boost.">
+        <component name="Power Supplies">
+            <component name="Bend">
+                <pv name="TLMB:PS:Bend:StatusCheck:Status">
+                    <description>TL Microtron to Booster Bend PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 01">
+                <pv name="TLMB:PS:HCM:01:StatusCheck:Status">
+                    <description>TL Microtron to Booster HCM 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 02">
+                <pv name="TLMB:PS:HCM:02:StatusCheck:Status">
+                    <description>TL Microtron to Booster HCM 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 03">
+                <pv name="TLMB:PS:HCM:03:StatusCheck:Status">
+                    <description>TL Microtron to Booster HCM 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 04">
+                <pv name="TLMB:PS:HCM:04:StatusCheck:Status">
+                    <description>TL Microtron to Booster HCM 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 01">
+                <pv name="TLMB:PS:VCM:01:StatusCheck:Status">
+                    <description>TL Microtron to Booster VCM 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 02">
+                <pv name="TLMB:PS:VCM:02:StatusCheck:Status">
+                    <description>TL Microtron to Booster VCM 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 03">
+                <pv name="TLMB:PS:VCM:03:StatusCheck:Status">
+                    <description>TL Microtron to Booster VCM 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 04">
+                <pv name="TLMB:PS:VCM:04:StatusCheck:Status">
+                    <description>TL Microtron to Booster VCM 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 01">
+                <pv name="TLMB:PS:Q:01:StatusCheck:Status">
+                    <description>TL Microtron to Booster Quad 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 02">
+                <pv name="TLMB:PS:Q:02:StatusCheck:Status">
+                    <description>TL Microtron to Booster Quad 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 03">
+                <pv name="TLMB:PS:Q:03:StatusCheck:Status">
+                    <description>TL Microtron to Booster Quad 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 04">
+                <pv name="TLMB:PS:Q:04:StatusCheck:Status">
+                    <description>TL Microtron to Booster Quad 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 05">
+                <pv name="TLMB:PS:Q:05:StatusCheck:Status">
+                    <description>TL Microtron to Booster Quad 05 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+        </component>
+    </component>
+    <component name="TL Boost.-SR">
+        <component name="Power Supplies">
+            <component name="Bend 01">
+                <pv name="TLBSR:PS:Bend:01:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Bend 01 PS setpoint/readback mismatch</description>
+                    <enabled>false</enabled>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Bend 02">
+                <pv name="TLBSR:PS:Bend:02:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Bend 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 01">
+                <pv name="TLBSR:PS:HCM:01:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring HCM 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 02">
+                <pv name="TLBSR:PS:HCM:02:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring HCM 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 05">
+                <pv name="TLBSR:PS:HCM:05:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring HCM 05 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="HCM 06">
+                <pv name="TLBSR:PS:HCM:06:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring HCM 06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 01">
+                <pv name="TLBSR:PS:VCM:01:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring VCM 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 02">
+                <pv name="TLBSR:PS:VCM:02:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring VCM 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 03">
+                <pv name="TLBSR:PS:VCM:03:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring VCM 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 04">
+                <pv name="TLBSR:PS:VCM:04:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring VCM 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 05">
+                <pv name="TLBSR:PS:VCM:05:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring VCM 05 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="VCM 06">
+                <pv name="TLBSR:PS:VCM:06:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring VCM 06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 01">
+                <pv name="TLBSR:PS:Q:01:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Quad 01 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 02">
+                <pv name="TLBSR:PS:Q:02:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Quad 02 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 03">
+                <pv name="TLBSR:PS:Q:03:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Quad 03 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 04">
+                <pv name="TLBSR:PS:Q:04:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Quad 04 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 05">
+                <pv name="TLBSR:PS:Q:05:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Quad 05 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 06">
+                <pv name="TLBSR:PS:Q:06:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Quad 06 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 07">
+                <pv name="TLBSR:PS:Q:07:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Quad 07 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 08">
+                <pv name="TLBSR:PS:Q:08:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Quad 08 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+            <component name="Quad 09">
+                <pv name="TLBSR:PS:Q:09:StatusCheck:Status">
+                    <description>TL Booster to Storage-Ring Quad 09 PS setpoint/readback mismatch</description>
+                    <latching>true</latching>
+                </pv>
+            </component>
+        </component>
+    </component>
+    <component name="Common">
+        <component name="Servers">
+        </component>
+        <component name="Clients">
+            <component name="Headless">
+                <pv name="MyServerPV">
+                    <description>MyServerPV</description>
+                    <latching>true</latching>
+                    <guidance>
+                        <title>My Guide</title>
+                        <details>Guide details.</details>
+                    </guidance>
+                    <display>
+                        <title>My Disp</title>
+                        <details>MyDisplayCommand</details>
+                    </display>
+                    <command>
+                        <title>My Command</title>
+                        <details>MyCommand</details>
+                    </command>
+                </pv>
+            </component>
+        </component>
+    </component>
+</config>

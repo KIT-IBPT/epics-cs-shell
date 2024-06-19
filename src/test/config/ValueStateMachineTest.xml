@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+  <server name="default">
+  
+    <group name="Main" path="A:TEST:SM:01:">
+      <application instance="org.scictrl.csshell.epics.server.application.automata.SequenceStateMachine">
+        <name>Sequence</name>
+        <description>Shutdown FLUTE</description>
+        <busyString>FLUTE shutdown sequence in progress...</busyString>
+        <activeString>FLUTE shutdown sequence is complete.</activeString>
+        <sequence>
+          ${path}SetCond
+        </sequence>
+      </application>
+      <application instance="org.scictrl.csshell.epics.server.application.automata.ValueStateMachine">
+        <name>SetCond</name>
+        <description>Sets value.</description>
+        <busyString>Setting value.</busyString>
+        <activeString>Value has been set.</activeString>
+        <link>A:TEST:SM:01:Value</link>
+        <value>10</value>
+        <valuePrecision>0.1</valuePrecision>
+        <action>SET</action>
+        <conditionSet less="10"/>
+        <conditionActive greatereq="10"/>
+      </application>
+      <application instance="org.scictrl.csshell.epics.server.application.automata.ValueStateMachine">
+        <name>Set</name>
+        <description>Sets value.</description>
+        <busyString>Setting value.</busyString>
+        <activeString>Value has been set.</activeString>
+        <link>A:TEST:SM:01:Value</link>
+        <value>10</value>
+        <valuePrecision>0.1</valuePrecision>
+        <action>SET</action>
+      </application>
+      <application instance="org.scictrl.csshell.epics.server.application.automata.ValueStateMachine">
+        <name>SetOW</name>
+        <description>Sets value.</description>
+        <busyString>Setting value.</busyString>
+        <activeString>Value has been set.</activeString>
+        <link>A:TEST:SM:01:Value</link>
+        <value>10</value>
+        <valuePrecision>0.1</valuePrecision>
+        <action>SET_ONEWAY</action>
+      </application>
+      <application instance="org.scictrl.csshell.epics.server.application.automata.ValueStateMachine">
+        <name>Ramp</name>
+        <description>Ramps value.</description>
+        <busyString>Ramping value.</busyString>
+        <activeString>Value is ramped.</activeString>
+        <timeout>300</timeout>
+        <link>A:TEST:SM:01:Value</link>
+        <value>10.5</value>
+        <valuePrecision>0.001</valuePrecision>
+        <action>RAMP</action>
+        <valueStep>1</valueStep>
+        <stepTime>0.1</stepTime>
+      </application>
+      <application instance="org.scictrl.csshell.epics.server.application.automata.ValueStateMachine">
+        <name>Monitor</name>
+        <description>Monitor value.</description>
+        <busyString>Vaiting for value.</busyString>
+        <activeString>Value is at target.</activeString>
+        <timeout>300</timeout>
+        <link>A:TEST:SM:01:Value</link>
+        <value>10.0</value>
+        <valuePrecision>0.1</valuePrecision>
+        <action>MONITOR</action>
+      </application>
+      <record>
+        <name>Value</name>
+        <type>DBR_DOUBLE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+    
+    </group>
+    
+  </server>
+</config>

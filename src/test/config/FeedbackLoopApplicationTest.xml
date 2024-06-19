@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+	
+		<group name="TEST" path="A:TEST:">
+		
+			<application instance="org.scictrl.csshell.epics.server.application.FeedbackLoopApplication">
+				<name>FL</name>
+				<enabled>false</enabled>
+				<outputPV>A:TEST:01:Output</outputPV>
+				<inputPV>A:TEST:01:Input</inputPV>
+				<outputPoints>1,2</outputPoints>
+				<breakPoints>1</breakPoints>
+				<precision>0.001</precision>
+				<reactionWindow>300</reactionWindow>
+			</application>
+
+			<record>
+				<name>01:Output</name>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+				</processor>
+			</record>
+			
+			<record>
+				<name>01:Input</name>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+				</processor>
+			</record>
+		</group>
+
+
+	</server>
+
+</config>

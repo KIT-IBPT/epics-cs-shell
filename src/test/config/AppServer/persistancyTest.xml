@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+    <TEST:01:D::value>1.2345678</TEST:01:D::value>
+    <TEST:01:Dd::value>1.2345678\,1.2345678\,1.2345678\,1.2345678\,1.2345678\,1.2345678\,1.2345678\,1.2345678\,1.2345678\,1.2345678</TEST:01:Dd::value>
+    <TEST:01:C::value>A&amp;gt;B/C:D\,E;F</TEST:01:C::value>
+    <TEST:01:S::value>A&amp;gt;B/C:D\,E;F</TEST:01:S::value>
+</configuration>

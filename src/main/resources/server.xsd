@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+    <xsd:include schemaLocation=""></xsd:include>
+    <xsd:include schemaLocation=""></xsd:include>
+    <xsd:include schemaLocation=""></xsd:include>
+
+    <xsd:element name="config">
+	   	<xsd:complexType>
+	    	<xsd:sequence>
+	    		<xsd:element ref="server" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+	    	</xsd:sequence>
+	    </xsd:complexType>
+	</xsd:element>
+	
+   	<xsd:element name="server">
+	   	<xsd:complexType>
+	    	<xsd:sequence>
+	    		<xsd:element ref="substitutions" maxOccurs="1"
+	    			minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element ref="management" maxOccurs="1"
+	    			minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:choice><xsd:element ref="group" maxOccurs="unbounded" minOccurs="0">
+	    					<xsd:annotation>
+	    						<xsd:documentation></xsd:documentation>
+	    					</xsd:annotation>
+	    				</xsd:element><xsd:element ref="record" maxOccurs="unbounded" minOccurs="0">
+	    				</xsd:element><xsd:element maxOccurs="unbounded" minOccurs="0" ref="application">
+	    				</xsd:element></xsd:choice>
+	    	</xsd:sequence>
+	    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+	    </xsd:complexType>
+	</xsd:element>
+
+    <xsd:element name="management">
+	    <xsd:complexType>
+	    	<xsd:sequence>
+	    		<xsd:element name="name" type="xsd:string" maxOccurs="1"
+	    			minOccurs="0">
+	    			<xsd:annotation>
+	    				<xsd:documentation>
+	    					This name is prefix of PVs, which offer
+	    					management access to this server. If omitted,
+	    					default value is used: ${host}:${server}. Name
+	    					can contain two macro substitutions: ${host} -
+	    					is valid network host name of current machine,
+	    					if this can not be resolved, then "localhost" is
+	    					used ${server}: is server name as defined in
+	    					configuration
+	    				</xsd:documentation>
+	    			</xsd:annotation>
+	    		</xsd:element>
+	    		<xsd:element name="shutdown" type="xsd:string" maxOccurs="1"
+	    			minOccurs="0">
+	    			<xsd:annotation>
+	    				<xsd:documentation>
+	    					Shutdown string is suffix part of management PV,
+	    					which provides shutdown functionality for
+	    					server. If omitted, default value is used:
+	    					":shutdown".
+	    				</xsd:documentation>
+	    			</xsd:annotation>
+	    		</xsd:element>
+	    		<xsd:element name="ping" type="xsd:string" maxOccurs="1"
+	    			minOccurs="0">
+	    			<xsd:annotation>
+	    				<xsd:documentation>
+	    					Ping string is suffix part of management PV,
+	    					which provides ping functionality for the
+	    					server. If omitted, default value is used:
+	    					":ping".
+	    				</xsd:documentation>
+	    			</xsd:annotation>
+	    		</xsd:element>
+	    		<xsd:element name="list" type="xsd:string" maxOccurs="1" minOccurs="0">
+	    			<xsd:annotation>
+	    				<xsd:documentation>List string is suffix part of management PV, which provides list functionality for the server. 
+	Calling this PV will return array of strings with all PV names supported bz the server.
+	If omitted, default value is used: ":list".</xsd:documentation>
+	    			</xsd:annotation></xsd:element>
+	    	</xsd:sequence>
+	    </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="group">
+	    <xsd:complexType>
+	    	<xsd:annotation>
+	    		<xsd:documentation>
+	    			Group holds together multiple records and provides part
+	    			of PV name for them.
+	    		</xsd:documentation>
+	    	</xsd:annotation>
+	    	<xsd:sequence>
+	    		<xsd:element maxOccurs="1" minOccurs="0"
+	    			ref="substitutions">
+	    			<xsd:annotation>
+	    				<xsd:documentation>
+	    					Any tag defined under substitutions will be
+	    					read as substitution key-value pair. Where
+	    					key is the tag name itself and value is
+	    					contents of the tag.
+
+	    					Tag contents may contain following
+	    					substitutions: ${path} - full path of the
+	    					grup, this contains full hirarchz of paths
+	    					up to current group. ${path1} - path
+	    					component defined in current groups under
+	    					path attribute. ${name} - name of curent
+	    					group
+
+	    					Substitutions can be used inside tag values
+	    					for all record definitions inside this group
+	    					and all subgroups in it's hierchy.
+	    					Substitution definition in subgroups may
+	    					redefine values for substitutions within
+	    					it's own scope.
+
+	    					In ganeral a substitution ${KEY} may be used
+	    					in any tag contents. The Sustitution key
+	    					${KEY} will be replaced with substitution
+	    					value when:
+
+	    					- KEY is a tag defined on same level as tag
+	    					containing the substitution. For example
+	    					descrtiption tag in record may use as
+	    					substitution name, units or any other tag
+	    					defined in same record.
+
+	    					- KEY is defined within substitution section
+	    					in any parent group. If same KEY is defined
+	    					in several groups, then value defined
+	    					closest in hirarchy will be used.
+
+	    					If KEY is defined as tag on same level and
+	    					as substitution, then tag value will be
+	    					used. Tags have prority over substitutions.
+	    				</xsd:documentation>
+	    			</xsd:annotation>
+	    		</xsd:element>
+	    		<xsd:choice maxOccurs="1" minOccurs="1">
+	    			<xsd:element name="insert" type="xsd:string"
+	    				maxOccurs="1" minOccurs="0">
+	    			</xsd:element>
+	    			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+	    				<xsd:element ref="record" maxOccurs="unbounded"
+	    					minOccurs="0">
+	    				</xsd:element>
+	    				<xsd:element ref="group" maxOccurs="unbounded"
+	    					minOccurs="0">
+	    				</xsd:element>
+	    				<xsd:element ref="application" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+	    			</xsd:choice>
+	    		</xsd:choice>
+            </xsd:sequence>
+	    	<xsd:attribute name="name" type="xsd:string">
+	    		<xsd:annotation>
+	    			<xsd:documentation>
+	    				Name of group. No current use.
+	    			</xsd:documentation>
+	    		</xsd:annotation>
+	    	</xsd:attribute>
+	    	<xsd:attribute name="path" type="xsd:string">
+	    		<xsd:annotation>
+	    			<xsd:documentation>
+	    				Path provides chunk to PV name. Full PV name is
+	    				assembled from hierarchy of previous paths and
+	    				ending record name.
+	    			</xsd:documentation>
+	    		</xsd:annotation>
+	    	</xsd:attribute>
+	    	<xsd:attribute name="template" type="xsd:boolean"></xsd:attribute>
+	    </xsd:complexType>
+	</xsd:element>
+	
+
+    <xsd:element name="record">
+	    <xsd:complexType>
+	    	<xsd:sequence>
+	    		<xsd:element name="name" type="xsd:string" maxOccurs="1"
+	    			minOccurs="1">
+	    		</xsd:element>
+	    		<xsd:element name="type" maxOccurs="1" minOccurs="1">
+	    			<xsd:simpleType>
+	    				<xsd:restriction base="xsd:string">
+	    					<xsd:enumeration value="DBR_STRING"></xsd:enumeration>
+	    					<xsd:enumeration value="DBR_SHORT"></xsd:enumeration>
+	    					<xsd:enumeration value="DBR_FLOAT"></xsd:enumeration>
+	    					<xsd:enumeration value="DBR_ENUM"></xsd:enumeration>
+	    					<xsd:enumeration value="DBR_BYTE"></xsd:enumeration>
+	    					<xsd:enumeration value="DBR_INT"></xsd:enumeration>
+	    					<xsd:enumeration value="DBR_DOUBLE"></xsd:enumeration>
+	    				</xsd:restriction>
+	    			</xsd:simpleType>
+	    		</xsd:element>
+	    		<xsd:element name="description" type="xsd:string"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="persistent" type="xsd:boolean"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="count" type="xsd:positiveInteger"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="units" type="xsd:string" maxOccurs="1"
+	    			minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="upperDispLimit" type="xsd:double"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="lowerDispLimit" type="xsd:double"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="upperWarningLimit" type="xsd:double"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="lowerWarningLimit" type="xsd:double"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="upperAlarmLimit" type="xsd:double"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="lowerAlarmLimit" type="xsd:double"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="upperCtrlLimit" type="xsd:double"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="lowerCtrlLimit" type="xsd:double"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="precision" type="xsd:positiveInteger"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="enumLabels" type="xsd:string"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="alarm" type="alarmType" maxOccurs="1"
+	    			minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="alarmConf" type="alarmConfType"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element ref="processor" maxOccurs="1" minOccurs="0"></xsd:element>
+	    	</xsd:sequence>
+	    </xsd:complexType>
+	</xsd:element>
+
+
+    <xsd:complexType name="alarmType">
+        <xsd:annotation>
+        	<xsd:documentation>Initial values for alarm fields in record.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        	<xsd:element name="severity" type="severityType"></xsd:element>
+        	<xsd:element name="status" type="statusType"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="severityType">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    			EPICS severity enumeration.
+    		</xsd:documentation>
+    	</xsd:annotation>
+    	<xsd:restriction base="xsd:string">
+    		<xsd:enumeration value="NO_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="MINOR_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="MAJOR_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="INVALID_ALARM"></xsd:enumeration>
+    	</xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="statusType">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    			EPICS Status enumeration.
+    		</xsd:documentation>
+    	</xsd:annotation>
+    	<xsd:restriction base="xsd:string">
+    		<xsd:enumeration value="NO_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="READ_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="WRITE_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="HIHI_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="HIGH_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="LOLO_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="LOW_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="STATE_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="COS_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="COMM_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="TIMEOUT_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="HW_LIMIT_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="CALC_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="SCAN_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="LINK_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="SOFT_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="BAD_SUB_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="UDF_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="DISABLE_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="SIMM_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="READ_ACCESS_ALARM"></xsd:enumeration>
+    		<xsd:enumeration value="WRITE_ACCESS_ALARM"></xsd:enumeration>
+    	</xsd:restriction>
+    </xsd:simpleType>
+
+	<xsd:element name="processor">
+	    <xsd:complexType>
+	    	<xsd:sequence>
+	    		<xsd:element name="trigger" maxOccurs="1" minOccurs="0">
+	    			<xsd:simpleType>
+	    				<xsd:union>
+	    					<xsd:simpleType>
+	    						<xsd:restriction base="xsd:string">
+	    							<xsd:pattern value="\$\{[^}]+\}"></xsd:pattern>
+	    						</xsd:restriction>
+	    					</xsd:simpleType>
+	    					<xsd:simpleType>
+	    						<xsd:restriction base="xsd:positiveInteger"></xsd:restriction>
+	    					</xsd:simpleType>
+	    				</xsd:union>
+	    			</xsd:simpleType>
+	    		</xsd:element>
+	    		<xsd:element name="value" type="xsd:string" maxOccurs="1"
+	    			minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="fixed" type="xsd:boolean" maxOccurs="1"
+	    			minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="alarmSeverity" type="severityType"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:element name="alarmStatus" type="statusType"
+	    			maxOccurs="1" minOccurs="0">
+	    		</xsd:element>
+	    		<xsd:choice maxOccurs="unbounded" minOccurs="1">
+	    			<xsd:group ref="pDefaultAlarmProcessorGroup"></xsd:group>
+	    			<xsd:group ref="pStateWatchdogProcessorGroup"></xsd:group>
+	    			<xsd:group ref="pLinkedValueProcessorGroup"></xsd:group>
+	    			<xsd:group ref="pStatusCheckAlarmProcessorGroup"></xsd:group>
+	    			<xsd:group ref="pHostPingAlarmProcessorGroup"></xsd:group>
+	    			<xsd:group ref="pValueDiffCheckProcessorGroup"></xsd:group>
+	    			<xsd:group ref="pHeartbeatValueProcessorGroup"></xsd:group>
+	    		</xsd:choice>
+	        </xsd:sequence>
+	    	<xsd:attribute name="instance">
+	    		<xsd:simpleType>
+	    			<xsd:restriction base="xsd:string">
+	    				<xsd:enumeration value="org.scictrl.csshell.epics.server.processor.HostPingAlarmProcessor"></xsd:enumeration>
+	    				<xsd:enumeration value="org.scictrl.csshell.epics.server.processor.DefaultAlarmProcessor"></xsd:enumeration>
+	    				<xsd:enumeration value="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></xsd:enumeration>
+	    				<xsd:enumeration value="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor"></xsd:enumeration>
+	    				<xsd:enumeration value="org.scictrl.csshell.epics.server.processor.StatusCheckAlarmProcessor"></xsd:enumeration>
+	    				<xsd:enumeration value="org.scictrl.csshell.epics.server.processor.SummaryAlarmProcessor"></xsd:enumeration>
+	    				<xsd:enumeration value="org.scictrl.csshell.epics.server.processor.StateWatchdogProcessor"></xsd:enumeration>
+	    				<xsd:enumeration value="org.scictrl.csshell.epics.server.processor.ValueDiffAlarmProcessor"></xsd:enumeration>
+	    				<xsd:enumeration value="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor"></xsd:enumeration>
+	    			</xsd:restriction>
+	    		</xsd:simpleType>
+	    	</xsd:attribute>
+	    </xsd:complexType>
+	</xsd:element>
+	
+    <xsd:group name="pDefaultAlarmProcessorGroup">
+		<xsd:sequence>
+    		<xsd:element ref="gate" maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+		</xsd:sequence>
+    </xsd:group>
+    
+    <xsd:group name="pValueDiffCheckProcessorGroup">
+		<xsd:sequence>
+			<xsd:element name="device" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+			<xsd:element name="time_window" type="intOrSubstitutionType"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+			<xsd:element name="value_window" maxOccurs="1" minOccurs="0"
+				type="doubleOrSubstitutionType">
+			</xsd:element>
+			<xsd:element name="precision"
+				type="doubleOrSubstitutionType" maxOccurs="1" minOccurs="0">
+			</xsd:element>
+			<xsd:element ref="gate" maxOccurs="1" minOccurs="1"></xsd:element>
+		</xsd:sequence>
+    </xsd:group>
+
+	<xsd:simpleType name="doubleOrSubstitutionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d+(.\d)?"></xsd:pattern>
+			<xsd:pattern value="(\$\{)\w+(\})"></xsd:pattern>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="intOrSubstitutionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d+"></xsd:pattern>
+			<xsd:pattern value="(\$\{)\w+(\})"></xsd:pattern>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="gate">
+		<xsd:annotation>
+			<xsd:documentation>
+				Tag used by SummayAlarmProcessor to enable or
+				disable propagation of alarm in reerence to some
+				enumeration value. Gate is open for letting
+				trough alarms when binary AND of linked status
+				and mask is more than 0.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="link" type="xsd:string">
+				</xsd:element>
+				<xsd:element name="mask"
+					type="maskType">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>    
+    
+
+    <xsd:group name="pLinkedValueProcessorGroup">
+    	<xsd:sequence>
+        	<xsd:element ref="input" maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+    	</xsd:sequence>
+    </xsd:group>
+
+    <xsd:group name="pHeartbeatValueProcessorGroup">
+    	<xsd:sequence>
+    		<xsd:element name="filter" maxOccurs="1" minOccurs="0">
+    			<xsd:simpleType>
+    				<xsd:restriction base="xsd:string">
+    					<xsd:enumeration value="AVG"></xsd:enumeration>
+    					<xsd:enumeration value="AVGPEAKPEAK"></xsd:enumeration>
+    				</xsd:restriction>
+    			</xsd:simpleType>
+    		</xsd:element>
+    		<xsd:element name="transform" maxOccurs="1" minOccurs="0">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element name="x0" type="xsd:double">
+    					</xsd:element>
+    					<xsd:element name="x1"
+    						type="xsd:double">
+    					</xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    	</xsd:sequence>
+    </xsd:group>
+
+    <xsd:group name="pStatusCheckAlarmProcessorGroup">
+    	<xsd:sequence>
+            <xsd:element name="maskOn" type="maskType"></xsd:element>
+    		<xsd:element name="maskOff" type="maskType"></xsd:element>
+    		<xsd:element name="alarmSeverity" type="severityType"></xsd:element>
+    		<xsd:element name="alarmStatus" type="statusType"></xsd:element>
+    		<xsd:element ref="gate"></xsd:element>
+    	</xsd:sequence>
+    </xsd:group>
+
+    <xsd:group name="pStateWatchdogProcessorGroup">
+    	<xsd:sequence>
+    		<xsd:element name="valueOn" type="alarmType" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="valueOff" type="alarmType" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="monitor" minOccurs="0" maxOccurs="1">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element name="fails" type="xsd:positiveInteger"></xsd:element>
+    					<xsd:element name="resetValue">
+    						<xsd:simpleType>
+    							<xsd:restriction base="xsd:int">
+    								<xsd:enumeration value="0"></xsd:enumeration>
+    								<xsd:enumeration value="1"></xsd:enumeration>
+    							</xsd:restriction>
+    						</xsd:simpleType>
+    					</xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+    
+    <xsd:group name="pHostPingAlarmProcessorGroup">
+    	<xsd:sequence>
+    		<xsd:element name="host" type="xsd:string"></xsd:element>
+    	</xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="alarmConfType">
+    	<xsd:sequence>
+    		<xsd:element name="path" type="xsd:string" maxOccurs="1"
+    			minOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="description" type="xsd:string"
+    			maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="latching" type="xsd:boolean"
+    			maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="enabled" type="xsd:boolean" maxOccurs="1"
+    			minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="display" maxOccurs="1" minOccurs="0">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element name="title" type="xsd:string"
+    						maxOccurs="1" minOccurs="1">
+    					</xsd:element>
+    					<xsd:element name="details" type="xsd:string"
+    						maxOccurs="1" minOccurs="1">
+    					</xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    		<xsd:element name="guidance" maxOccurs="1" minOccurs="0">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element name="title" type="xsd:string"
+    						maxOccurs="1" minOccurs="1">
+    					</xsd:element>
+    					<xsd:element name="details" type="xsd:string"
+    						maxOccurs="1" minOccurs="1">
+    					</xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:element>
+    		<xsd:element name="command" maxOccurs="1" minOccurs="0">
+    			<xsd:complexType>
+    				<xsd:sequence>
+    					<xsd:element name="title" type="xsd:string" maxOccurs="1" minOccurs="1">
+    					</xsd:element>
+    					<xsd:element name="details"
+    						type="xsd:string" maxOccurs="1" minOccurs="1">
+    					</xsd:element>
+    				</xsd:sequence>
+    			</xsd:complexType></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    
+    <xsd:group name="aDeviceGroupGroup">
+        <xsd:annotation>
+        	<xsd:documentation>Application tag may containe additional subtags in addition to here described mandatory tags. They can be read by application at config phase.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        	<xsd:element name="devices" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:group name="aCyclingApplicationGroup">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    			Application tag may containe additional subtags in
+    			addition to here described mandatory tags. They can be
+    			read by application at config phase.
+    		</xsd:documentation>
+    	</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="device" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+		</xsd:sequence>
+    </xsd:group>
+    
+    <xsd:group name="aFeedbackLoopApplicationGroup">
+    	<xsd:sequence>
+    		<xsd:element name="enabled" type="xsd:boolean"></xsd:element>
+    		<xsd:element name="outputPV" type="xsd:string"></xsd:element>
+    		<xsd:element name="inputPV" type="xsd:string"></xsd:element>
+    		<xsd:element name="outputPoints" type="xsd:string"></xsd:element>
+    		<xsd:element name="breakPoints" type="xsd:string"></xsd:element>
+    	</xsd:sequence>
+    </xsd:group>
+
+    <xsd:element name="application">
+	    <xsd:complexType>
+	        <xsd:annotation>
+	        	<xsd:documentation>Application tag may containe additional subtags in addition to here described mandatory tags. They can be read by application at config phase.</xsd:documentation>
+	        </xsd:annotation>
+	        <xsd:sequence>
+	        	<xsd:element name="name" type="xsd:string" maxOccurs="1"
+	        		minOccurs="1">
+	        		<xsd:annotation>
+	        			<xsd:documentation>
+	        				Unique name of the application.
+
+	        				It should be used as first part of full PV
+	        				name for all record PVs within this
+	        				application. This request is not mandatory
+	        				but should be followed when possible for
+	        				clarity.
+	        			</xsd:documentation>
+	        		</xsd:annotation>
+	        	</xsd:element>
+	        	<xsd:element name="nameDelimiter" type="xsd:string"
+	        		maxOccurs="1" minOccurs="0">
+	        		<xsd:annotation>
+	        			<xsd:documentation>
+	        				It is used as dilimiter between PV name for
+	        				application and PV name for specific records
+	        				within appliction.
+	        			</xsd:documentation>
+	        		</xsd:annotation>
+	        	</xsd:element>
+	        	<xsd:choice maxOccurs="unbounded" minOccurs="1">
+	        		<xsd:group ref="aDeviceGroupGroup"></xsd:group>
+	        		<xsd:group ref="aCyclingApplicationGroup"></xsd:group>
+	        		<xsd:group ref="aFeedbackLoopApplicationGroup"></xsd:group>
+	        	</xsd:choice>
+	        </xsd:sequence>
+	        <xsd:attribute name="instance" use="required">
+	        	<xsd:annotation>
+	        		<xsd:documentation>
+	        			A valid Java class name of application class which
+	        			implements Application interface.
+	        		</xsd:documentation>
+	        	</xsd:annotation>
+	        	<xsd:simpleType>
+	        		<xsd:restriction base="xsd:string">
+	        			<xsd:enumeration value="org.scictrl.csshell.epics.server.application.devicegroup.DeviceGroupApplication"></xsd:enumeration>
+   						<xsd:enumeration value="org.scictrl.csshell.epics.server.application.cycling.CyclingApplication"></xsd:enumeration>
+   						<xsd:enumeration value="org.scictrl.csshell.epics.server.application.FeedbackLoopApplication"></xsd:enumeration>
+	        		</xsd:restriction>
+	        	</xsd:simpleType>
+	        </xsd:attribute>
+	    </xsd:complexType>
+	</xsd:element>
+
+    <xsd:element name="substitutions">
+    	<xsd:annotation></xsd:annotation>
+	    <xsd:complexType>
+	    	<xsd:sequence>
+	    		<xsd:any minOccurs="1" maxOccurs="unbounded"
+	    			processContents="lax">
+	    		</xsd:any>
+	    	</xsd:sequence>
+	    </xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="input">
+	    <xsd:complexType>
+	    	<xsd:choice maxOccurs="1" minOccurs="1">
+	    		<xsd:sequence>
+	    			<xsd:element name="links" type="xsd:string"
+	    				minOccurs="1" maxOccurs="1">
+	    			</xsd:element>
+	    			<xsd:element minOccurs="0" maxOccurs="1"
+	    				name="type">
+	    				<xsd:simpleType>
+	    					<xsd:restriction base="xsd:string">
+	    						<xsd:enumeration value="value"></xsd:enumeration>
+	    						<xsd:enumeration value="alarm"></xsd:enumeration>
+	    					</xsd:restriction>
+	    				</xsd:simpleType>
+	    			</xsd:element>
+	    		</xsd:sequence>
+	    		<xsd:sequence>
+	    			<xsd:element name="alarmPath" minOccurs="1"
+	    				maxOccurs="1" type="xsd:string">
+	    			</xsd:element>
+	    			<xsd:element name="recursive" minOccurs="0"
+	    				maxOccurs="1" type="xsd:boolean">
+	    			</xsd:element>
+	    		</xsd:sequence>
+	    		<xsd:sequence>
+	    			<xsd:element name="link" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+	    		</xsd:sequence>
+	    	</xsd:choice>
+	    </xsd:complexType>
+	</xsd:element>
+    
+    <xsd:simpleType name="maskType">
+    	<xsd:restriction base="xsd:string"><xsd:pattern value="0b[01]+"></xsd:pattern></xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

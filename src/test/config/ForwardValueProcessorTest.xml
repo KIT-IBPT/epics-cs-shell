@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="default" path="A:TEST:01:">
+
+			<record>
+				<name>ValueA</name>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+					<value>0</value>
+				</processor>
+			</record>
+      <record>
+        <name>ValueB</name>
+        <type>DBR_DOUBLE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      <record>
+        <name>Trigger</name>
+        <type>DBR_DOUBLE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      <record>
+        <name>Enable</name>
+        <type>DBR_BYTE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      
+      <record>
+        <name>Forward</name>
+        <type>DBR_DOUBLE</type>
+        <processor instance="org.scictrl.csshell.epics.server.processor.ForwardValueProcessor">
+          <forwardPVs>${path}ValueA,${path}ValueB</forwardPVs>
+          <inputPV>${path}Trigger</inputPV>
+          <enablePV>${path}Enable</enablePV>
+        </processor>
+      </record>
+		</group>
+	</server>
+
+</config>

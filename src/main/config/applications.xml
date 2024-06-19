@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="default" path="A:TEST:">
+			<substitutions>
+				<path>${path}</path>
+				<subs1>SUB1</subs1>
+			</substitutions>
+			
+			<record>
+				<name>PS01:Curr:Get</name>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<units>A</units>
+				<upperDispLimit>100</upperDispLimit>
+				<lowerDispLimit>0</lowerDispLimit>
+				<upperWarningLimit>100</upperWarningLimit>
+				<lowerWarningLimit>0</lowerWarningLimit>
+				<upperAlarmLimit>100</upperAlarmLimit>
+				<lowerAlarmLimit>0</lowerAlarmLimit>
+				<upperCtrlLimit>100</upperCtrlLimit>
+				<lowerCtrlLimit>0</lowerCtrlLimit>
+				<precision>3</precision>
+				
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+					<value>0.0</value>
+				</processor>
+			</record>
+			
+			<record>
+				<name>PS01:Curr:Set</name>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<units>A</units>
+				<upperDispLimit>100</upperDispLimit>
+				<lowerDispLimit>0</lowerDispLimit>
+				<upperWarningLimit>100</upperWarningLimit>
+				<lowerWarningLimit>0</lowerWarningLimit>
+				<upperAlarmLimit>100</upperAlarmLimit>
+				<lowerAlarmLimit>0</lowerAlarmLimit>
+				<upperCtrlLimit>100</upperCtrlLimit>
+				<lowerCtrlLimit>0</lowerCtrlLimit>
+				<precision>3</precision>
+				
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+					<value>0.0</value>
+				</processor>
+			</record>
+
+
+		<application instance="org.scictrl.csshell.epics.server.application.cycling.CyclingApplication">
+			<name>PSCycle:01</name>
+			<delimiter>:</delimiter>
+			<pvs>Device,Progress,Status,Cycle,Abort,NoCycles,StepsPerRamp,WaitBetweenSteps,WaitAtLimits,FinalValue,UseDeviceLimits,MaxLimit,MinLimit,CycleDecrement</pvs>
+			<device>A:TEST:PS01</device>
+			<get_pv>A:TEST:PS01:Curr:Get</get_pv>
+			<set_pv>A:TEST:PS01:Curr:Set</set_pv>
+		</application>
+			
+
+		</group>
+		
+	</server>
+
+</config>

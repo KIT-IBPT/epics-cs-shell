@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+	
+		<management>
+			<name>A:${host}:${server}</name>
+		</management>
+		
+		<group name="default" path="A:TEST:01:">
+			<record>
+				<name>Clock</name>
+				<type>DBR_STRING</type>
+				<description>Current UTC time as ISO string.</description>
+   				<processor instance="org.scictrl.csshell.epics.server.processor.TimeValueProcessor">
+				</processor>
+			</record>
+			<record>
+				<name>Clock:Unix</name>
+				<type>DBR_INT</type>
+				<description>Current UTC time in seconds, known as Unix or Epoch time.</description>
+				<processor instance="org.scictrl.csshell.epics.server.processor.TimeValueProcessor">
+					<trigger>1000</trigger>
+					<format>UNIX</format>
+				</processor>
+			</record>
+			<record>
+				<name>Clock:ISO</name>
+				<type>DBR_STRING</type>
+				<description>Current UTC time as ISO string.</description>
+   				<processor instance="org.scictrl.csshell.epics.server.processor.TimeValueProcessor">
+					<trigger>1000</trigger>
+					<format>yyyy-MM-dd'T'HH:mm:ss.SSSZ</format>
+				</processor>
+			</record>
+			<record>
+				<name>Clock:DateTime</name>
+				<type>DBR_STRING</type>
+				<description>Current UTC time as date-time custom formated string.</description>
+				<processor instance="org.scictrl.csshell.epics.server.processor.TimeValueProcessor">
+					<trigger>1000</trigger>
+					<format>yyyy-MM-dd HH:mm:ss</format>
+				</processor>
+			</record>
+      <record>
+        <name>Clock:Hours</name>
+        <type>DBR_STRING</type>
+        <description>Hours.</description>
+        <processor instance="org.scictrl.csshell.epics.server.processor.TimeValueProcessor">
+          <trigger>1000</trigger>
+          <format>DURATION</format>
+        </processor>
+      </record>
+		</group>
+		
+	
+	</server>
+
+</config>

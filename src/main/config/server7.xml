@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+
+
+		<group name="Beam Info" path="A:TEST:BeamInfo:01:">
+			<!-- record>
+				<name>Current:Plot1s</name>
+				<type>DBR_DOUBLE</type>
+				<units>mA</units>
+				<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+					<trigger>1000</trigger>
+					<input>
+						<link>A:SR:BeamInfo:01:Current</link>
+					</input>
+				</processor>
+			</record>
+			<record>
+				<name>Current:Plot15s</name>
+				<type>DBR_DOUBLE</type>
+				<units>mA</units>
+				<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+					<trigger>15000</trigger>
+					<input>
+						<link>A:SR:BeamInfo:01:Current</link>
+					</input>
+				</processor>
+			</record>
+			<record>
+				<name>Current:Plot1m</name>
+				<type>DBR_DOUBLE</type>
+				<units>mA</units>
+				<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+					<trigger>60000</trigger>
+					<input>
+						<link>A:SR:BeamInfo:01:Current</link>
+					</input>
+				</processor>
+			</record-->
+			<record>
+				<name>Lifetime:Plot1s</name>
+				<type>DBR_DOUBLE</type>
+				<units>h</units>
+				<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+					<trigger>330</trigger>
+					<input>
+						<link>A:SR:BeamInfo:01:Lifetime</link>
+					</input>
+					<filter>AVG</filter>
+					<transform>
+						<x0>0.0</x0>
+						<x1>0.000277778</x1>
+					</transform>
+				</processor>
+			</record>
+			<record>
+				<name>Lifetime:Plot15s</name>
+				<type>DBR_DOUBLE</type>
+				<units>h</units>
+				<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+					<trigger>5000</trigger>
+					<input>
+						<link>A:SR:BeamInfo:01:Lifetime</link>
+					</input>
+					<filter>AVG</filter>
+					<transform>
+						<x0>0.0</x0>
+						<x1>0.000277778</x1>
+					</transform>
+				</processor>
+			</record>
+			<record>
+				<name>Lifetime:Plot1m</name>
+				<type>DBR_DOUBLE</type>
+				<units>h</units>
+				<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+					<trigger>20000</trigger>
+					<input>
+						<link>A:SR:BeamInfo:01:Lifetime</link>
+					</input>
+					<filter>AVG</filter>
+					<transform>
+						<x0>0.0</x0>
+						<x1>0.000277778</x1>
+					</transform>
+				</processor>
+			</record>
+			<!-- record>
+				<name>Energy:Plot1s</name>
+				<type>DBR_DOUBLE</type>
+				<units>h</units>
+				<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+					<trigger>1000</trigger>
+					<input>
+						<link>A:SR:BeamInfo:01:Energy</link>
+					</input>
+				</processor>
+			</record>
+			<record>
+				<name>Energy:Plot15s</name>
+				<type>DBR_DOUBLE</type>
+				<units>h</units>
+				<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+					<trigger>15000</trigger>
+					<input>
+						<link>A:SR:BeamInfo:01:Energy</link>
+					</input>
+				</processor>
+			</record>
+			<record>
+				<name>Energy:Plot1m</name>
+				<type>DBR_DOUBLE</type>
+				<units>h</units>
+				<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+					<trigger>60000</trigger>
+					<input>
+						<link>A:SR:BeamInfo:01:Energy</link>
+					</input>
+				</processor>
+			</record-->
+		</group>
+
+		
+	</server>
+
+</config>

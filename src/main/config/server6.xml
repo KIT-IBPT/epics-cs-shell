@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+
+		<group name="Dummy PS" path="A:TEST:PS:">
+			<group name="PS Template" template="true">
+				<record>
+					<name>Current:Get</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+						<input><links>${path}Current:Setpoint</links></input>
+					</processor>
+				</record>
+				<record>
+					<name>Current:Setpoint:Get</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+						<input><links>${path}Current:Setpoint</links></input>
+					</processor>
+				</record>
+				<record>
+					<name>Current:Setpoint</name>
+					<type>DBR_DOUBLE</type>
+					<upperDispLimit>100</upperDispLimit>
+					<lowerDispLimit>0</lowerDispLimit>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>Current:Setpoint.DISP</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>Current:Readback</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+						<input><links>${path}Current:Setpoint</links></input>
+					</processor>
+				</record>
+				<record>
+					<name>Voltage:Readback</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+						<input><links>${path}Current:Setpoint</links></input>
+					</processor>
+				</record>
+				<record>
+					<name>Status:On</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+						<value>1</value>
+					</processor>
+				</record>
+				<record>
+					<name>Status:ErrorSum</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+						<value>1</value>
+					</processor>
+				</record>
+				<record>
+					<name>CMD:On</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>CMD:On.DISP</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>CMD:Off</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>CMD:Off.DISP</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+			</group>
+			<group name="PS Device" path="01:">
+				<insert>PS Template</insert>
+			</group>
+			<group name="PS Device" path="02:">
+				<insert>PS Template</insert>
+			</group>
+			<group name="PS Device" path="03:">
+				<insert>PS Template</insert>
+			</group>
+		</group>
+		
+<group name="Extraction Line PS" path="A:TEST:PS:">
+
+		<!--
+		 !
+		 !        Extraction Line PS Diff Check 
+		 !
+		 !-->
+
+			<group name="PS_EL_Check" template="true">
+	 			<record>
+					<name>${ps}:Check</name>
+					<type>DBR_BYTE</type>
+					<alarmConf>
+						<path>Transfer,Extraction,PS Diff Check</path>
+						<description>PS setpoint/readback mismatch</description><latching>true</latching>
+					</alarmConf>
+					<processor instance="org.scictrl.csshell.epics.server.processor.ValueDiffAlarmProcessor">
+						<device>A:TEST:PS:${ps}</device>
+						<gate><link>A:SR:OperationStatus:01:Mode</link><mask>0b001111</mask></gate>
+					</processor>
+				</record>
+				<record>
+					<name>${ps}:Status:Alarm</name>
+					<type>DBR_BYTE</type>
+					<alarmConf>
+						<path>Transfer,Extraction,PS Status Check</path>
+						<description>${status_alarm_desc}</description>
+						<latching>true</latching>
+					</alarmConf>
+					<processor instance="org.scictrl.csshell.epics.server.processor.StatusCheckAlarmProcessor">
+						<input><links>A:TEST:PS:${ps}:Status:ErrorSum</links></input>
+						 <maskOn>0b1</maskOn>
+						<maskOff>0b0</maskOff>
+						<alarmSeverity>MAJOR_ALARM</alarmSeverity>
+						<alarmStatus>STATE_ALARM</alarmStatus>
+						<gate><link>A:SR:OperationStatus:01:Mode</link><mask>0b001111</mask></gate>
+					</processor>
+				</record>
+			</group>
+			<group><substitutions><ps>01</ps></substitutions><insert>PS_EL_Check</insert></group>
+			<group><substitutions><ps>02</ps></substitutions><insert>PS_EL_Check</insert></group>
+			<group><substitutions><ps>03</ps></substitutions><insert>PS_EL_Check</insert></group>
+			<group name="PS_Check">
+	 			<record>
+					<name>04:Check</name>
+					<type>DBR_BYTE</type>
+					<alarmConf>
+						<path>Transfer,Extraction,PS Diff Check</path>
+						<description>PS setpoint/readback mismatch</description><latching>true</latching>
+					</alarmConf>
+					<processor instance="org.scictrl.csshell.epics.server.processor.ValueDiffAlarmProcessor">
+						<device>A:EL:PS:MB-01</device>
+						<gate><link>A:SR:OperationStatus:01:Mode</link><mask>0b001111</mask></gate>
+					</processor>
+				</record>
+				<record>
+					<name>04:Status:Alarm</name>
+					<type>DBR_BYTE</type>
+					<alarmConf>
+						<path>Transfer,Extraction,PS Status Check</path>
+						<description>${status_alarm_desc}</description>
+						<latching>true</latching>
+					</alarmConf>
+					<processor instance="org.scictrl.csshell.epics.server.processor.StatusCheckAlarmProcessor">
+						<input><links>A:EL:PS:MB-01:Status:ErrorSum</links></input>
+						 <maskOn>0b1</maskOn>
+						<maskOff>0b0</maskOff>
+						<alarmSeverity>MAJOR_ALARM</alarmSeverity>
+						<alarmStatus>STATE_ALARM</alarmStatus>
+						<gate><link>A:SR:OperationStatus:01:Mode</link><mask>0b001111</mask></gate>
+					</processor>
+				</record>
+			</group>
+		</group>
+		
+	</server>
+
+</config>

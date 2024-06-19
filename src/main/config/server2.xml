@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="alarm only" path="A:TEST:State:01:">
+			
+			<record>
+				<name>state</name>
+				<alarmConf>
+					<path>Comp1,Comp2,Comp3</path>
+					<description>Test state.</description>
+					<latching>true</latching>
+					<display>
+						<title>BPM Panel</title>
+						<details>SR/BPM/Main.opi</details>
+					</display>
+				</alarmConf>
+				
+			</record>
+			
+		</group>
+		
+	</server>
+
+</config>

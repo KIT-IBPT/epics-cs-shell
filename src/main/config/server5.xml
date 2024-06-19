@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="Dummy PS" path="A:TEST:PS:">
+			<group name="PS Template" template="true">
+				<record>
+					<name>Curr:Get</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+						<input><links>${path}Curr:Set</links></input>
+					</processor>
+				</record>
+				<record>
+					<name>Curr:Set</name>
+					<type>DBR_DOUBLE</type>
+					<upperDispLimit>100</upperDispLimit>
+					<lowerDispLimit>0</lowerDispLimit>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>Curr:Set.DISP</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>Curr:Readback</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+						<input><links>${path}Curr:Set</links></input>
+					</processor>
+				</record>
+				<record>
+					<name>Volt:Readback</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+						<input><links>${path}Curr:Set</links></input>
+					</processor>
+				</record>
+				<record>
+					<name>Status:ON</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+						<value>1</value>
+					</processor>
+				</record>
+				<record>
+					<name>Status:ErrorSum</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+						<value>1</value>
+					</processor>
+				</record>
+				<record>
+					<name>On</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>On.DISP</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>Off</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>Off.DISP</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+			</group>
+			<group name="PS Device" path="01:">
+				<insert>PS Template</insert>
+			</group>
+			<group name="PS Device" path="02:">
+				<insert>PS Template</insert>
+			</group>
+			<group name="PS Device" path="03:">
+				<insert>PS Template</insert>
+			</group>
+		</group>
+		
+		<group name="alarm only" path="A:TEST:Cycle:">
+			<application instance="org.scictrl.csshell.epics.server.application.cycling.CyclingApplication">
+				<name>01</name>
+				<nameDelimiter>:</nameDelimiter>
+				<device>A:TEST:PS:01</device>
+			</application>
+		</group>
+		
+	</server>
+
+</config>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="default" path="A:TEST:">
+			<record>
+				<name>Alarm:01:Bit1:P</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+					<value>0</value>
+				</processor>
+			</record>
+      <record>
+        <name>Alarm:01:Bit2:P</name>
+        <type>DBR_BYTE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      <record>
+        <name>Alarm:01:Bit3:P</name>
+        <type>DBR_BYTE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      <record>
+        <name>Alarm:01:Bit1:AlarmDisable</name>
+        <type>DBR_BYTE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      <record>
+        <name>Alarm:01:Bit2:AlarmDisable</name>
+        <type>DBR_BYTE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      <record>
+        <name>Alarm:01:Bit3:AlarmDisable</name>
+        <type>DBR_BYTE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+			<record>
+				<name>Alarm:01:Sum</name>
+          <processor instance="org.scictrl.csshell.epics.server.processor.SummaryAlarmProcessor">
+            <input><links>${path}Alarm:01:Bit1:P,${path}Alarm:01:Bit2:P,${path}Alarm:01:Bit3:P</links></input>
+            <alarmDisable>
+              <pv>:AlarmDisable</pv>
+              <replace>1</replace>
+             </alarmDisable>
+          </processor>
+ 			</record>
+
+		</group>
+
+		
+	</server>
+
+</config>

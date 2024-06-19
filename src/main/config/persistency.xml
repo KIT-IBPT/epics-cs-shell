@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+<A:TEST:PS:02:Voltage:Readback::value>1.0</A:TEST:PS:02:Voltage:Readback::value>
+<A:TEST:PS:01:Voltage:Readback::value>1.0</A:TEST:PS:01:Voltage:Readback::value>
+<A:TEST:PS:02:Current:Readback::value>1.0</A:TEST:PS:02:Current:Readback::value>
+<A:TEST:PS:01:Current:Readback::value>1.0</A:TEST:PS:01:Current:Readback::value>
+<A:TEST:PS:03:Voltage:Readback::value>1.0</A:TEST:PS:03:Voltage:Readback::value>
+<A:TEST:PS:03:Current:Readback::value>1.0</A:TEST:PS:03:Current:Readback::value>
+</configuration>

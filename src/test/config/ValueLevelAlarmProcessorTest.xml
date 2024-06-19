@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="default" path="A:TEST:">
+			<record>
+				<name>PS:01:Current:Setpoint</name>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+					<value>0</value>
+				</processor>
+			</record>
+			<record>
+				<name>PS:01:Current:Setpoint:Alarm</name>
+				<processor instance="org.scictrl.csshell.epics.server.processor.ValueLevelAlarmProcessor">
+					<input><links>${path}PS:01:Current:Setpoint</links></input>
+					<precision>0.01</precision>
+					<default>
+						<severity>NO_ALARM</severity>
+						<status>NO_ALARM</status>
+					</default>
+					<lowerAlarm>
+						<limit>-2.0</limit>
+						<severity>MAJOR_ALARM</severity>
+						<status>LOLO_ALARM</status>
+					</lowerAlarm>
+					<lowerWarning>
+						<limit>-1.0</limit>
+						<severity>MINOR_ALARM</severity>
+						<status>LOW_ALARM</status>
+					</lowerWarning>
+					<upperWarning>
+						<limit>1.0</limit>
+						<severity>MINOR_ALARM</severity>
+						<status>HIGH_ALARM</status>
+					</upperWarning>
+					<upperAlarm>
+						<limit>2.0</limit>
+						<severity>MAJOR_ALARM</severity>
+						<status>HIHI_ALARM</status>
+					</upperAlarm>
+				</processor>
+			</record>
+
+		</group>
+
+		
+	</server>
+
+</config>

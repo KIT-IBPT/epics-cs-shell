@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="default" path="A:TEST:">
+
+			<record>
+				<name>Value</name>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+					<value>0</value>
+				</processor>
+			</record>
+			
+      <application instance="org.scictrl.csshell.epics.server.application.RunningCounterApplication">
+        <name>Calc1</name>
+        <inputPV>A:TEST:Value</inputPV>
+        <interval>10.0</interval>
+      </application>
+      
+      <application instance="org.scictrl.csshell.epics.server.application.RunningCounterApplication">
+        <name>Calc2</name>
+        <inputPV>A:TEST:Value</inputPV>
+        <interval>10.0</interval>
+        <strictAlarmFilter>false</strictAlarmFilter>
+      </application>
+
+      <application instance="org.scictrl.csshell.epics.server.application.RunningCounterApplication">
+        <name>Calc3</name>
+        <inputPV>A:TEST:Value</inputPV>
+        <interval>10.0</interval>
+        <strictAlarmFilter>false</strictAlarmFilter>
+        <nanValue>0.0</nanValue>
+        <valid>
+          <check greater="2.0"/>
+        </valid>
+      </application>
+
+		</group>
+	</server>
+
+</config>

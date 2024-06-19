@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+
+
+		<group name="Machine" path="A:TEST:">
+			
+			<application instance="org.scictrl.csshell.epics.server.application.PowerSupply">
+				<name>PS:01</name>
+			</application>
+			<application instance="org.scictrl.csshell.epics.server.application.PowerSupply">
+				<name>PS:02</name>
+			</application>
+			<application instance="org.scictrl.csshell.epics.server.application.PowerSupply">
+				<name>PS:03</name>
+			</application>
+			<application instance="org.scictrl.csshell.epics.server.application.PowerSupply">
+				<name>PS:04</name>
+			</application>
+			
+			<application instance="org.scictrl.csshell.epics.server.application.WigglerRampApplication">
+				<name>WigglerRamp:01</name>
+				
+				<setpoints>A:TEST:PS:01:Current:Setpoint,A:TEST:PS:02:Current:Setpoint,A:TEST:PS:03:Current:Setpoint,A:TEST:PS:04:Current:Setpoint</setpoints>
+				<setpointsGet>A:TEST:PS:01:Current:Setpoint:Get,A:TEST:PS:02:Current:Setpoint:Get,A:TEST:PS:03:Current:Setpoint:Get,A:TEST:PS:04:Current:Setpoint:Get</setpointsGet>
+				<readbacks>A:TEST:PS:01:Current:Readback,A:TEST:PS:02:Current:Readback,A:TEST:PS:03:Current:Readback,A:TEST:PS:04:Current:Readback</readbacks>
+				<rates>A:TEST:PS:01:Current:Setpoint:Rate,A:TEST:PS:02:Current:Setpoint:Rate,A:TEST:PS:03:Current:Setpoint:Rate,A:TEST:PS:04:Current:Setpoint:Rate</rates>
+				<ratesGet>A:TEST:PS:01:Current:Setpoint:Rate:Get,A:TEST:PS:02:Current:Setpoint:Rate:Get,A:TEST:PS:03:Current:Setpoint:Rate:Get,A:TEST:PS:04:Current:Setpoint:Rate:Get</ratesGet>
+				
+				<table>
+					<file>field-resonanse.dat</file>
+				</table>
+				
+			</application>
+
+		</group>
+
+		
+	</server>
+
+</config>

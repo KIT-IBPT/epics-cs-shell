@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="default" path="A:TEST:">
+			<record>
+				<name>PS:01:Status</name>
+				<type>DBR_INT</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+					<value>0</value>
+				</processor>
+			</record>
+			<record>
+				<name>PS:01:Status:Alarm</name>
+				<processor instance="org.scictrl.csshell.epics.server.processor.StatusCheckAlarmProcessor">
+					<input><links>${path}PS:01:Status</links></input>
+          <supress_time>1000</supress_time>
+          <alarmSeverity>MAJOR_ALARM</alarmSeverity>
+          <alarmStatus>STATE_ALARM</alarmStatus>
+          <maskOn>0b1</maskOn>
+          <maskOff>0b0</maskOff>
+				</processor>
+			</record>
+
+		</group>
+
+		
+	</server>
+
+</config>

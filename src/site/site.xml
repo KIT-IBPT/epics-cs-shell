@@ -1,0 +1,29 @@
+<project
+  name="Java Application Server">
+  
+  <bannerLeft>
+    <name>Java Application Server</name>
+  </bannerLeft>
+  
+  <body>
+    <menu name="Overview">
+      <item name="Overview" href="index.html" />
+      <item name="Modules" href="modules.html" />
+      <item name="Development Guide" href="development.html" />
+      <item name="Javadoc" href="apidocs/index.html" />
+    </menu>
+    <menu name="Projects">
+      <item name="Java Application Server" href="https://share.flute.ibpt.kit.edu/smbshare/Controlsystem/Maven/site/csshell/" />
+      <item name="FLUTE - Java Application Server" href="https://share.flute.ibpt.kit.edu/smbshare/Controlsystem/Maven/site/flute-csshell/" />
+    </menu>
+    <menu ref="reports" />
+    <menu ref="modules" />
+  </body>
+  
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>2.0.0-M8</version>
+  </skin>
+  
+</project>

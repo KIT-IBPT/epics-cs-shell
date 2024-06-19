@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="default" path="A:TEST:">
+
+      <record>
+        <name>Value:1</name>
+        <type>DBR_DOUBLE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0.1</value>
+        </processor>
+      </record>
+      <record>
+        <name>Value:2</name>
+        <type>DBR_DOUBLE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0.2</value>
+        </processor>
+      </record>
+
+      <application instance="org.scictrl.csshell.epics.server.application.ArrayAssemblyApplication">
+        <name>Array:1</name>
+        <el0>
+          <pv>${path}Value:1</pv>
+          <label>Element 1</label>
+        </el0>
+        <el1>
+          <pv></pv>
+          <label>Element 2</label>
+        </el1>
+        <el2>
+          <pv>${path}Value:2</pv>
+          <label>Element 3</label>
+        </el2>
+      </application>
+
+      <application instance="org.scictrl.csshell.epics.server.application.ArrayAssemblyApplication">
+        <name>Array:2</name>
+        <el0>
+          <pv>${path}Value:1</pv>
+          <label>Element 1</label>
+        </el0>
+        <el1>
+          <pv></pv>
+          <label>Element 2</label>
+        </el1>
+        <el2>
+          <pv>${path}Value:Null</pv>
+          <label>Element 3</label>
+        </el2>
+      </application>
+
+		</group>
+	</server>
+
+</config>

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><config name="TEST Machine"><component name="Infrastructure"><component name="Operation"><pv name="A:TEST:Machine:01:OC:Running"><description>OrbitCorrection app running</description><latching>true</latching><enabled>true</enabled></pv></component></component></config>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+  <server name="default">
+  
+    <management>
+      <name>A:${host}:${server}:VC</name>
+    </management>
+  
+  
+    <group name="Main" path="A:TEST:VC:01:">
+      <record>
+        <name>A</name>
+        <type>DBR_DOUBLE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      <record>
+        <name>B</name>
+        <type>DBR_DOUBLE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      <record>
+        <name>C</name>
+        <type>DBR_DOUBLE</type>
+        <count>1</count>
+        <processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+          <value>0</value>
+        </processor>
+      </record>
+      <record>
+        <name>SUM</name>
+        <processor instance="org.scictrl.csshell.epics.server.processor.ValueCheckProcessor">
+          <checks>
+            <check equal="1">${path}AND</check>
+            <check equal="1">${path}OR</check>
+          </checks>
+        </processor>
+      </record>
+      <record>
+        <name>AND</name>
+        <processor instance="org.scictrl.csshell.epics.server.processor.ValueCheckProcessor">
+          <checks and="true">
+            <check equal="1">${path}A</check>
+            <check equal="1">${path}B</check>
+            <check greater="10">${path}C</check>
+            <check less="20">${path}C</check>
+          </checks>
+        </processor>
+      </record>
+      <record>
+        <name>OR</name>
+        <processor instance="org.scictrl.csshell.epics.server.processor.ValueCheckProcessor">
+          <checks and="false">
+            <check equal="1">${path}A</check>
+            <check equal="1">${path}B</check>
+            <check greater="10">${path}C</check>
+            <check less="20">${path}C</check>
+          </checks>
+        </processor>
+      </record>
+    </group>
+    
+  </server>
+</config>

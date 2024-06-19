@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+
+
+		<group name="Booster PS" path="A:TEST:PS:">
+
+		<!--
+		 !
+		 !        BOOSTER PS Diff Check 
+		 !
+		 !-->
+
+			<record>
+				<name>MB-01:Status:RampAlarm</name>
+				<type>DBR_BYTE</type>
+				<alarmConf>
+					<path>Booster,PS Status Check</path>
+					<description>Not in ramp mode!</description>
+					<latching>true</latching>
+				</alarmConf>
+				<processor instance="org.scictrl.csshell.epics.server.processor.StatusCheckAlarmProcessor">
+					<input><links>ACS:PBEND_B.01:status</links></input>
+					 <maskOn>0b000000000000</maskOn>
+					<maskOff>0b000100000000</maskOff>
+					<alarmSeverity>MINOR_ALARM</alarmSeverity>
+					<alarmStatus>STATE_ALARM</alarmStatus>
+					<gate><link>A:SR:OperationStatus:01:Mode</link><mask>0b001111</mask></gate>
+				</processor>
+			</record>
+		</group>
+
+		
+	</server>
+
+</config>

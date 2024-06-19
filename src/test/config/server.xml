@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		<group name="default" path="A:TEST:">
+			<substitutions>
+				<subs1>SUB1</subs1>
+			</substitutions>
+			
+			<record>
+				<name>Test001</name>
+				<description>Record description is here. Some substitutions: ${path} ${subs1} ${units} ${name}.</description>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<units>U</units>
+				<upperDispLimit>100</upperDispLimit>
+				<lowerDispLimit>0</lowerDispLimit>
+				<upperWarningLimit>100</upperWarningLimit>
+				<lowerWarningLimit>0</lowerWarningLimit>
+				<upperAlarmLimit>100</upperAlarmLimit>
+				<lowerAlarmLimit>0</lowerAlarmLimit>
+				<upperCtrlLimit>100</upperCtrlLimit>
+				<lowerCtrlLimit>0</lowerCtrlLimit>
+				<precision>3</precision>
+				<enumLabels>A,B,C</enumLabels>
+				
+				<alarm>
+					<severity>MINOR_ALARM</severity>
+					<status>UDF_ALARM</status>
+				</alarm>
+				
+				<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+					<trigger>0</trigger>
+					<value>0</value>
+					<fixed>false</fixed>
+					<input>
+						<type>value</type>
+						<links>A:TEST:Test002</links>
+					</input>
+				</processor>
+				
+				<alarmConf>
+					<path>Comp1,Comp2,Comp3</path>
+					<description>Alarm description is here. Some substitutions: ${name},${path},${subs1}.</description>
+					<latching>true</latching>
+				</alarmConf>
+			</record>
+			
+			<record>
+				<name>Test002</name>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<units>U</units>
+				<upperDispLimit>100</upperDispLimit>
+				<lowerDispLimit>0</lowerDispLimit>
+				<upperWarningLimit>100</upperWarningLimit>
+				<lowerWarningLimit>0</lowerWarningLimit>
+				<upperAlarmLimit>100</upperAlarmLimit>
+				<lowerAlarmLimit>0</lowerAlarmLimit>
+				<upperCtrlLimit>100</upperCtrlLimit>
+				<lowerCtrlLimit>0</lowerCtrlLimit>
+				<precision>3</precision>
+				<enumLabels>A,B,C</enumLabels>
+				
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+					<trigger>0</trigger>
+					<value>0</value>
+					<fixed>false</fixed>
+				</processor>
+			</record>
+      
+			<group name="default" path="State:01:">
+				<record>
+					<name>state</name>
+					<type>DBR_ENUM</type>
+					<count>1</count>
+					<enumLabels>Shutdown,Injection,Ramping,UserOperation,MachinePhysics</enumLabels>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+						<value>2</value>
+					</processor>
+				</record>
+			</group>
+      
+			<record>
+				<name>Alarm001</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				
+				<alarmConf>
+					<path>Comp1,Comp2,Comp3</path>
+					<description>SR:BPM:S1:01:SE:VOLT1</description>
+					<latching>true</latching>
+					<display>
+						<title>BPM Panel</title>
+						<details>SR/BPM/Main.opi</details>
+					</display>
+				</alarmConf>
+				
+				<processor instance="org.scictrl.csshell.epics.server.processor.SummaryAlarmProcessor">
+					<input>
+						<links>A:TEST:Test001</links>
+					</input>
+				</processor>
+			</record>
+      
+			<record>
+				<name>Alarm002</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				
+				<processor instance="org.scictrl.csshell.epics.server.processor.SummaryAlarmProcessor">
+					<input>
+						<links>A:TEST:Alarm001</links>
+					</input>
+					<gate>
+						<mask>15</mask>
+						<link>A:TEST:State:01:state</link>
+					</gate>
+				</processor>
+			</record>
+			
+			<record>
+				<name>Alarm003</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.SimAlarmProcessor">
+					<value>0</value>
+					<trigger>3000</trigger>
+					<alarmSeverity>MINOR_ALARM</alarmSeverity>
+					<alarmStatus>UDF_ALARM</alarmStatus>
+				</processor>
+			</record>
+			
+			<record>
+				<name>Alarm004</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.SummaryAlarmProcessor">
+					<input>
+						<links>A:TEST:DUMMY</links>
+					</input>
+					<gate>
+						<mask>15</mask>
+						<link>A:TEST:State:01:state</link>
+					</gate>
+				</processor>
+			</record>
+
+		</group>
+		
+		<group name="alarm only" path="A:TEST:State:01:">
+			
+			<record>
+				<name>state</name>
+				<alarmConf>
+					<config></config>
+				</alarmConf>
+				
+			</record>
+			
+		</group>
+		
+	</server>
+
+</config>

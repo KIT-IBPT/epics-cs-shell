@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+
+		<group name="Dummy PS" path="A:TEST:PS:">
+			<group name="PS Template" template="true">
+				<record>
+					<name>Current:Get</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+						<input><links>${path}Current:Setpoint</links></input>
+					</processor>
+				</record>
+				<record>
+					<name>Current:Setpoint:Get</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.LinkedValueProcessor">
+						<input><links>${path}Current:Setpoint</links></input>
+					</processor>
+				</record>
+				<record>
+					<name>Current:Setpoint</name>
+					<type>DBR_DOUBLE</type>
+					<upperDispLimit>100</upperDispLimit>
+					<lowerDispLimit>0</lowerDispLimit>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>Current:Setpoint.DISP</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>Current:Readback</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+						<trigger>1000</trigger>
+						<input><link>${path}Current:Setpoint</link>	</input>
+					</processor>
+				</record>
+				<record>
+					<name>Voltage:Readback</name>
+					<type>DBR_DOUBLE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.HeartbeatValueProcessor">
+						<trigger>1000</trigger>
+						<input><link>${path}Current:Setpoint</link></input>
+					</processor>
+				</record>
+				<record>
+					<name>Status:On</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+						<value>1</value>
+					</processor>
+				</record>
+				<record>
+					<name>Status:ErrorSum</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+						<value>1</value>
+					</processor>
+				</record>
+				<record>
+					<name>CMD:On</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>CMD:On.DISP</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>CMD:Off</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+				<record>
+					<name>CMD:Off.DISP</name>
+					<type>DBR_BYTE</type>
+					<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor"></processor>
+				</record>
+			</group>
+			<group name="PS Device" path="01:">
+				<insert>PS Template</insert>
+			</group>
+			<group name="PS Device" path="02:">
+				<insert>PS Template</insert>
+			</group>
+			<group name="PS Device" path="03:">
+				<insert>PS Template</insert>
+			</group>
+		</group>
+		
+		<group name="Cycling" path="A:TEST:PSCycle:">
+			<application instance="org.scictrl.csshell.epics.server.application.cycling.CyclingApplication">
+				<name>01</name>
+				<nameDelimiter>:</nameDelimiter>
+				<device>A:TEST:PS:01</device>
+			</application>
+			<application instance="org.scictrl.csshell.epics.server.application.cycling.CyclingApplication">
+				<name>02</name>
+				<nameDelimiter>:</nameDelimiter>
+				<device>A:TEST:PS:02</device>
+			</application>
+			<application instance="org.scictrl.csshell.epics.server.application.cycling.CyclingApplication">
+				<name>03</name>
+				<nameDelimiter>:</nameDelimiter>
+				<device>A:TEST:PS:03</device>
+			</application>
+		</group>
+		
+		<group name="Cycling Master" path="A:TEST:PSCycleMaster:">
+			<application instance="org.scictrl.csshell.epics.server.application.cycling.CyclingApplicationMaster">
+				<name>01</name>
+				<nameDelimiter>:</nameDelimiter>
+				<delegates>A:TEST:PSCycle:01,A:TEST:PSCycle:02,A:TEST:PSCycle:03</delegates>
+			</application>
+		</group>		
+	</server>
+
+</config>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+		
+		<group name="default" path="A:TEST:">
+
+			<record>
+				<name>Value</name>
+				<type>DBR_DOUBLE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.MemoryValueProcessor">
+					<value>0</value>
+				</processor>
+			</record>
+			
+      <application instance="org.scictrl.csshell.epics.server.application.ScanApplication">
+        <name>Scan</name>
+        <setpointPV>A:TEST:Value</setpointPV>
+        <precision>0.001</precision>
+        <reactionWindow>300</reactionWindow>
+      </application>
+      
+      <application instance="org.scictrl.csshell.epics.server.application.ScanApplication">
+        <name>Scan1</name>
+        <precision>0.001</precision>
+        <reactionWindow>300</reactionWindow>
+      </application>
+
+		</group>
+	</server>
+
+</config>

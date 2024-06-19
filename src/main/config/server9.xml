@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="server.xsd">
+
+	<server name="default">
+		<management>
+			<name>A:${host}:SoftServer:${server}</name>
+			<shutdown>:shutdown1</shutdown>
+			<ping>:ping1</ping>
+			<list>:list1</list>
+		</management>
+
+
+		<group name="Machine" path="A:TEST:Machine:01:">
+		
+			<record>
+				<name>OC:Running</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				<alarmConf>
+					<path>Infrastructure,Operation</path>
+					<description>OrbitCorrection app running</description>
+					<latching>true</latching>
+				</alarmConf>
+				<processor instance="org.scictrl.csshell.epics.server.processor.StateWatchdogProcessor">
+					<trigger>1000</trigger>
+					<valueOn>
+						<severity>NO_ALARM</severity>
+						<status>NO_ALARM</status>
+					</valueOn>
+					<valueOff>
+						<severity>MAJOR_ALARM</severity>
+						<status>STATE_ALARM</status>
+					</valueOff>
+					<monitor>
+						<fails>5</fails>
+						<resetValue>0</resetValue>
+					</monitor>
+					<gate><link>A:SR:OperationStatus:01:Mode</link><mask>0b001111</mask></gate>
+				</processor>
+			</record>
+			<!-- record>
+				<name>OC:AutoMode</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.StateWatchdogProcessor">
+					<valueOn>
+						<severity>NO_ALARM</severity>
+						<status>NO_ALARM</status>
+					</valueOn>
+					<valueOff>
+						<severity>NO_ALARM</severity>
+						<status>NO_ALARM</status>
+					</valueOff>
+				</processor>
+			</record>
+			<record>
+				<name>OC:Correcting</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				<processor instance="org.scictrl.csshell.epics.server.processor.StateWatchdogProcessor">
+					<valueOn>
+						<severity>NO_ALARM</severity>
+						<status>NO_ALARM</status>
+					</valueOn>
+					<valueOff>
+						<severity>NO_ALARM</severity>
+						<status>NO_ALARM</status>
+					</valueOff>
+				</processor>
+			</record>
+			<record>
+				<name>SQLArchiver:Running</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				<alarmConf>
+					<path>Infrastructure,Operation</path>
+					<description>SQL archiver app running</description>
+					<latching>true</latching>
+				</alarmConf>
+				<processor instance="org.scictrl.csshell.epics.server.processor.StateWatchdogProcessor">
+					<trigger>60000</trigger>
+					<valueOn>
+						<severity>NO_ALARM</severity>
+						<status>NO_ALARM</status>
+					</valueOn>
+					<valueOff>
+						<severity>MAJOR_ALARM</severity>
+						<status>STATE_ALARM</status>
+					</valueOff>
+					<monitor>
+						<fails>3</fails>
+						<resetValue>0</resetValue>
+					</monitor>
+				</processor>
+			</record>
+			<record>
+				<name>SQLArchiver:ReadError</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				<alarmConf>
+					<path>Infrastructure,Operation</path>
+					<description>Value reading is failing!</description>
+					<latching>true</latching>
+				</alarmConf>
+				<processor instance="org.scictrl.csshell.epics.server.processor.StateWatchdogProcessor">
+					<trigger>60000</trigger>
+					<valueOn>
+						<severity>MAJOR_ALARM</severity>
+						<status>STATE_ALARM</status>
+					</valueOn>
+					<valueOff>
+						<severity>NO_ALARM</severity>
+						<status>NO_ALARM</status>
+					</valueOff>
+					<monitor>
+						<fails>3</fails>
+						<resetValue>1</resetValue>
+					</monitor>
+				</processor>
+			</record>
+			<record>
+				<name>SQLArchiver:SQLError</name>
+				<type>DBR_BYTE</type>
+				<count>1</count>
+				<alarmConf>
+					<path>Infrastructure,Operation</path>
+					<description>Write to SQL database is failing!</description>
+					<latching>true</latching>
+				</alarmConf>
+				<processor instance="org.scictrl.csshell.epics.server.processor.StateWatchdogProcessor">
+					<trigger>60000</trigger>
+					<valueOn>
+						<severity>MAJOR_ALARM</severity>
+						<status>STATE_ALARM</status>
+					</valueOn>
+					<valueOff>
+						<severity>NO_ALARM</severity>
+						<status>NO_ALARM</status>
+					</valueOff>
+					<monitor>
+						<fails>3</fails>
+						<resetValue>1</resetValue>
+					</monitor>
+				</processor>
+			</record>
+			<record>
+				<name>FeedbackLoop-BBB-01:ErrorSum:Alarm</name>
+				<type>DBR_BYTE</type>
+				<alarmConf>
+					<path>Storage Ring,Status Check</path>
+					<description>BBB feedback loop error sum!</description>
+					<latching>true</latching>
+				</alarmConf>
+				<processor instance="org.scictrl.csshell.epics.server.processor.SummaryAlarmProcessor">
+					<input><links>A:SR:FeedbackLoop:BBB-01:ErrorSum</links></input>
+					<gate><link>A:SR:OperationStatus:01:Mode</link><mask>0b001111</mask></gate>
+				</processor>
+			</record-->
+
+		</group>
+
+		
+	</server>
+
+</config>
