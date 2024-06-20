@@ -1,5 +1,5 @@
 <project
-  name="Java Application Server">
+  name="CS-Shell Java Application Server">
   
   <bannerLeft>
     <name>CS-Shell Java Application Server</name>
@@ -14,7 +14,7 @@
     </menu>
     <menu name="Projects">
       <item name="CS-Shell App Server" href="${csshellLink}" />
-      <item name="FLUTE - App Server" href="${fluteCsshellLink}" />
+      <item name="CS-Shell-FLUTE App Server" href="${fluteCsshellLink}" />
     </menu>
     <menu ref="reports" />
     <menu ref="modules" />
