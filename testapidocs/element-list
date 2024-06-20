@@ -1,0 +1,6 @@
+unnamed package
+org.scictrl.csshell.epics.server.application.automata.test
+org.scictrl.csshell.epics.test
+org.scictrl.csshell.server.application.test
+org.scictrl.csshell.server.processor.test
+org.scictrl.csshell.server.test
