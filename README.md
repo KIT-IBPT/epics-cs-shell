@@ -8,11 +8,17 @@ The CS-Shell application server is not intended for writing device drivers, this
 
 The CS-Shell application server is designed for implementing of algorithms and complex procedures as server process using capacity of JAVA programming language and supporting Java libraries.
 
+The CS-Shell application has been developed for and it is used at [KARA](https://www.ibpt.kit.edu/kara.php) and [FLUTE](https://www.ibpt.kit.edu/flute.php) at [Institute of Beam Physics and Technology / KIT](https://www.ibpt.kit.edu/).
+
 ## The Application Server and CSS
 
 The CS-Shell application server works well together and supplements functionality of CSS. Perfect example is complete ANKA alarm server solution, which is build around CSS BEAST alarm.
 
 The CS-Shell alarm server is implemented on top of CS-Shell EPICS application server with focus on supporting functionality of CSS BEAST alarm engine.
+
+## Documentation
+
+Development documentation can be found here: [https://kit-ibpt.github.io/epics-cs-shell/](https://kit-ibpt.github.io/epics-cs-shell/).
 
 ## Copyright / License
 
