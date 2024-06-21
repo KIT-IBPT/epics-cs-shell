@@ -42,7 +42,7 @@
       <properties>
         <csshellSource>https://github.com/KIT-IBPT/epics-cs-shell</csshellSource>
         <csshellLink>https://kit-ibpt.github.io/epics-cs-shell/</csshellLink>
-        <csshellLinkFlute>https://kit-ibpt.github.io/epics-cs-shell/</csshellLinkFlute>
+        <csshellLinkFlute>https://kit-ibpt.github.io/epics-cs-shell-flute/</csshellLinkFlute>
       </properties>
       <distributionManagement>
         <site>
