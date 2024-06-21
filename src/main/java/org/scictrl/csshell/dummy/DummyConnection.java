@@ -18,12 +18,20 @@ import org.scictrl.csshell.Status;
  * <p>DummyConnection class.</p>
  *
  * @author igor@scictrl.com
+ * 
+ * @param <T> data type
  */
 public class DummyConnection<T> implements Connection<DummyConnector, T, Object> {
 
 	private String name;
 	private DummyConnector connector;
 
+	/**
+	 * Constructor.
+	 */
+	private DummyConnection() {
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public String getName() {

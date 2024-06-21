@@ -8,6 +8,11 @@ import org.scictrl.csshell.epics.server.ValueLinks.ValueHolder;
 
 import gov.aps.jca.dbr.Severity;
 
+/**
+ * <p>PSSwitchApplication class.</p>
+ *
+ * @author igor@scictrl.com
+ */
 public class PSSwitchApplication extends AbstractApplication {
 	
 	private static final String CMD_OFF = "Cmd:Off";
@@ -27,9 +32,13 @@ public class PSSwitchApplication extends AbstractApplication {
 	private ValueLinks linkOf;
 	private ValueLinks linkSt;
 
+	/**
+	 * <p>Constructor for PSSwitchApplication.</p>
+	 */
 	public PSSwitchApplication() {
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void configure(String name, HierarchicalConfiguration config) {
 		super.configure(name, config);
@@ -64,6 +73,7 @@ public class PSSwitchApplication extends AbstractApplication {
 	}
 	
 	
+	/** {@inheritDoc} */
 	@Override
 	protected synchronized void notifyRecordWrite(String name) {
 		super.notifyRecordWrite(name);

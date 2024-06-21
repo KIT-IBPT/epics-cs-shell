@@ -142,6 +142,11 @@ public class CASperr {
 	private EPICSConnector connector;
 	private ThreadPoolExecutor executor;
 
+	/**
+	 * Constructor.
+	 */
+	public CASperr() {
+	}
 	
 	/**
 	 * <p>Getter for the field <code>cache</code>.</p>

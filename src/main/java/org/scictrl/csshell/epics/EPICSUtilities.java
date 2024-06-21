@@ -1359,7 +1359,8 @@ public final class EPICSUtilities
 		return true;
 	}
 	
-	
+	private EPICSUtilities() {
+	}
 }
 
 /* __oOo__ */

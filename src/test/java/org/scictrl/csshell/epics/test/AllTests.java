@@ -12,5 +12,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ EPICSUtilitiesTest.class })
 public class AllTests {
+	
+	private AllTests() {
+	}
 
 }

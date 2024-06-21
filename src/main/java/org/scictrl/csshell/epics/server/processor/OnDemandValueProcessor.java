@@ -59,7 +59,12 @@ public class OnDemandValueProcessor extends AbstractValueProcessor {
 	private ValueProvider provider;
 	private Object key;
 	private TimeStamp timestamp;
-	
+
+	/**
+	 * Constructor.
+	 */
+	public OnDemandValueProcessor() {
+	}
 	
 	/**
 	 * Sets new provider object. Provider is asked for new value when necessary.

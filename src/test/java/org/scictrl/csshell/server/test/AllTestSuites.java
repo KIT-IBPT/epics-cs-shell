@@ -17,5 +17,8 @@ import org.junit.runners.Suite.SuiteClasses;
 		org.scictrl.csshell.server.processor.test.AllTests.class,
 		org.scictrl.csshell.epics.server.application.automata.test.AllTests.class })
 public class AllTestSuites {
+	
+	private AllTestSuites() {
+	}
 
 }

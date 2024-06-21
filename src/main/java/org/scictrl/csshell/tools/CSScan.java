@@ -24,6 +24,12 @@ public class CSScan {
 	static String pv;
 
 	/**
+	 * Constructor.
+	 */
+	private CSScan() {
+	}
+	
+	/**
 	 * <p>main.</p>
 	 *
 	 * @param args an array of {@link java.lang.String} objects

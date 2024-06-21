@@ -13,6 +13,9 @@ import org.scictrl.csshell.Status.State;
  * an object of actual communication layer, which delivered those values.
  *
  * @author igor@scictrl.com
+ * 
+ * @param <T> data type
+ * @param <V> vector delivering value, such as DBR
  */
 public final class Poop <T,V> {
 	

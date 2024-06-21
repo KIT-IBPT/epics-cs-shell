@@ -24,18 +24,24 @@ import gov.aps.jca.Channel;
  * object sharing.
  *
  * @author igor@scictrl.com
+ * 
+ * @param <C> connection implementation type
  */
 public abstract class AbstractConnector<C extends Connection<?,?,?>> 
 {
-	
+
 	/**
 	 * Default implementation of connection cache interface. Uses weak references.
 	 * @author igor@scictrl.com
-	 *
 	 */
 	public class DefaultConnectionCache implements ConnectionCache<C> {
 		Map<String, WeakReference<C>> cache= new HashMap<String, WeakReference<C>>(16);
-		
+
+		/**
+		 * Constructor.
+		 */
+		public DefaultConnectionCache() {
+		}
 		
 		/* (non-Javadoc)
 		 * @see org.scictrl.csshell.ConnectionCache#add(C)

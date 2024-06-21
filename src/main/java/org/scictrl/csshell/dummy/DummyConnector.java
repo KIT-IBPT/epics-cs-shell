@@ -12,6 +12,7 @@ import org.scictrl.csshell.AbstractConnector;
 import org.scictrl.csshell.DataType;
 import org.scictrl.csshell.MetaData;
 import org.scictrl.csshell.RemoteException;
+import org.scictrl.csshell.epics.EPICSConnector;
 
 /**
  * <p>DummyConnector class.</p>
@@ -24,7 +25,13 @@ public class DummyConnector extends AbstractConnector<DummyConnection<?>> {
 	public static final String TYPE="DUMMY";
 
 	
-	/** {@inheritDoc} */
+	/**
+	 * Create new EPICS plug instance.
+	 * 
+	 * @param configuration a {@link Properties} object
+	 * @throws RemoteException if initialization of remote context fails
+	 * @return a {@link EPICSConnector} object
+	 */
 	public static AbstractConnector<?> getInstance(Properties configuration)
 			throws RemoteException
 		{

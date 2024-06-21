@@ -231,4 +231,7 @@ public class SpringUtilities {
         pCons.setConstraint(SpringLayout.SOUTH, y);
         pCons.setConstraint(SpringLayout.EAST, x);
     }
+    
+    private SpringUtilities() {
+	}
 }

@@ -41,6 +41,12 @@ public class PersistencyStoreTest {
 			Assert.assertEquals(exp[i],act[i],0.000001);
 		}
 	}
+	
+	/**
+	 * Constructor.
+	 */
+	public PersistencyStoreTest() {
+	}
 
 	/**
 	 * Test.

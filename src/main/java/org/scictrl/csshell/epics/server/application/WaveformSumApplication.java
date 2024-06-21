@@ -94,14 +94,18 @@ public class WaveformSumApplication extends AbstractApplication {
 	
 	/**
 	 * Implementation must extract array data from record. Any data manipulation should be applied here.
-	 * @param input
-	 * @return
+	 *
+	 * @param input a {@link org.scictrl.csshell.epics.server.Record} object
+	 * @return an array of {@link double} objects
 	 */
 	protected double[] extract(Record input) {
 		double[] d= input.getValueAsDoubleArray();
 		return d;
 	}
 	
+	/**
+	 * <p>update.</p>
+	 */
 	protected void update() {
 		
 		int i= idx;

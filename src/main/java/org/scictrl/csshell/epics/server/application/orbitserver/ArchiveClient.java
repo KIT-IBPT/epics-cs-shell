@@ -390,5 +390,7 @@ public class ArchiveClient {
 	}
 	
 	
+	private ArchiveClient() {
+	}
 
 }

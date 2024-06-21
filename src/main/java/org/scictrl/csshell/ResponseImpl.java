@@ -4,6 +4,8 @@ package org.scictrl.csshell;
  * Default response implementation
  *
  * @author igor@scictrl.com
+ * 
+ * @param <C> connector implementation
  */
 public class ResponseImpl<C extends AbstractConnector<?>> implements Response<C>
 {
@@ -25,6 +27,7 @@ public class ResponseImpl<C extends AbstractConnector<?>> implements Response<C>
 	 * @param last <code>true</code> if this is the last response.
 	 * @param tag a {@link java.lang.Object} object
 	 * @param poop a {@link org.scictrl.csshell.Poop} object
+	 * 
 	 */
 	public ResponseImpl(Connection<C,?,?> source, Request<C> r,
 	    Object tag, boolean success, Exception error,

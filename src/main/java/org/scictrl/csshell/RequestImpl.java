@@ -9,6 +9,8 @@ import java.util.LinkedList;
  * responses.
  *
  * @author igor@scictrl.com
+ * 
+ * @param <C> connector implementation
  */
 public class RequestImpl<C extends AbstractConnector<?>> implements Request<C>
 {

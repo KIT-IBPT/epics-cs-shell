@@ -29,4 +29,6 @@ public class Test1 {
 		
 	}
 	
+	private Test1() {
+	}
 }

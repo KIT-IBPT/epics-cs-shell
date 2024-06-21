@@ -10,4 +10,10 @@ package org.scictrl.csshell.epics.server.processor;
  */
 public abstract class ManagementProcessor extends MemoryValueProcessor {
 
+	/**
+	 * Constructor.
+	 */
+	public ManagementProcessor() {
+	}
+
 }

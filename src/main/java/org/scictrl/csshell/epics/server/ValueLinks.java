@@ -637,6 +637,11 @@ public class ValueLinks {
 		return val;
 	}
 
+	/**
+	 * <p>consumeAsLong.</p>
+	 *
+	 * @return a long
+	 */
 	public long consumeAsLong() {
 		ValueHolder[] vh= consume();
 		
@@ -964,6 +969,7 @@ public class ValueLinks {
 	 *
 	 * @param value a {@link java.lang.Object} object
 	 * @throws java.lang.Exception if any.
+	 * @param select an array of {@link boolean} objects
 	 */
 	public void setValueToAll(Object value, boolean[] select) throws Exception {
 		if (listener==null) {
@@ -999,6 +1005,7 @@ public class ValueLinks {
 		return linkNames;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		StringBuilder sb= new StringBuilder(1024);

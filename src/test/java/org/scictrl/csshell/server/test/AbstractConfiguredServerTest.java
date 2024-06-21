@@ -39,6 +39,12 @@ public class AbstractConfiguredServerTest extends AbstractSimpleServerTest {
 	protected int pvCount=3; 
 
 	/**
+	 * Constructor.
+	 */
+	public AbstractConfiguredServerTest() {
+	}
+	
+	/**
 	 * <p>setUp.</p>
 	 *
 	 * @throws java.lang.Exception if fails

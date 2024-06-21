@@ -27,7 +27,13 @@ import gov.aps.jca.dbr.DBRType;
 public class SingleConnectionTest extends AbstractSimpleServerTest {
 
 	private String pvs = "A:TEST:Test001";
-	
+
+	/**
+	 * Constructor.
+	 */
+	public SingleConnectionTest() {
+	}
+
 	/**
 	 * Test.
 	 *

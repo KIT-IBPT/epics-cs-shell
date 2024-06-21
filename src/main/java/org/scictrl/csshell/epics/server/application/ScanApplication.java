@@ -121,7 +121,7 @@ public class ScanApplication extends AbstractApplication {
 		}
 		
 		private boolean aborted=false;
-		private boolean cancled=false;
+		private boolean canceled=false;
 		double start;
 		double end;
 		long rate;
@@ -189,14 +189,19 @@ public class ScanApplication extends AbstractApplication {
 		/**
 		 * Cancels and aborts the scan. Scan progress is stopped, there is no notification to ScanController. 
 		 */
-		public synchronized void cancle() {
-			cancled=true;
+		public synchronized void cancel() {
+			canceled=true;
 			_abort();
 			notify();
 		}
 		
-		public boolean isCancled() {
-			return cancled;
+		
+		/**
+		 * Returns <code>true</code> if scan has been canceled. 
+		 * @return <code>true</code> if scan has been canceled
+		 */
+		public boolean isCanceled() {
+			return canceled;
 		}
 
 		/**
@@ -252,7 +257,7 @@ public class ScanApplication extends AbstractApplication {
 			nextStepTime=null;
 			aborted=true;
 	
-			if (cancled) {
+			if (canceled) {
 				ctrl.log().debug("Cancled");
 			} else {
 				ctrl.log().debug("Aborted");

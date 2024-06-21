@@ -14,6 +14,11 @@ import org.scictrl.csshell.epics.server.ValueLinks.ValueHolder;
  */
 public class EnumToBitsProcessor extends LinkedValueProcessor {
 
+	/**
+	 * Constructor.
+	 */
+	public EnumToBitsProcessor() {
+	}
 	
 	/** {@inheritDoc} */
 	@Override

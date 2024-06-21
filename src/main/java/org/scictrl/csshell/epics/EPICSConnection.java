@@ -52,6 +52,8 @@ import gov.aps.jca.event.PutListener;
  * <p>EPICSConnection class.</p>
  *
  * @author igor@scictrl.com
+ * 
+ * @param <T> data type
  */
 public class EPICSConnection<T> implements Connection<EPICSConnector,T,DBR>, ConnectionListener {
 	

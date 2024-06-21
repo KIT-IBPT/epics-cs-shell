@@ -6,7 +6,9 @@ package org.scictrl.csshell.epics.server.application.automata;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 
 /**
- * 
+ * <p>DelayStateMachine class.</p>
+ *
+ * @author igor@scictrl.com
  */
 public class DelayStateMachine extends StateMachine {
 
@@ -15,11 +17,12 @@ public class DelayStateMachine extends StateMachine {
 	private double step=0;
 
 	/**
-	 * 
+	 * <p>Constructor for DelayStateMachine.</p>
 	 */
 	public DelayStateMachine() {
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void configure(String name, HierarchicalConfiguration config) {
 		super.configure(name, config);
@@ -29,6 +32,7 @@ public class DelayStateMachine extends StateMachine {
 		setState(State.INACTIVE);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void stateMachineActivate(final boolean dryrun) {
 		super.stateMachineActivate(dryrun);
@@ -74,6 +78,7 @@ public class DelayStateMachine extends StateMachine {
 		}
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void stateMachineAbort() {
 		updater=null;
@@ -81,6 +86,7 @@ public class DelayStateMachine extends StateMachine {
 		setState(State.INACTIVE);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void stateMachinePrepare() {
 		updater=null;

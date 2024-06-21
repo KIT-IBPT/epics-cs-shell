@@ -86,6 +86,7 @@ public abstract class AbstractController {
 	
 	/**
 	 * Returns measurements count.
+	 *
 	 * @return measurements count
 	 */
 	public int getMeasurementCount() {
@@ -94,6 +95,7 @@ public abstract class AbstractController {
 	
 	/**
 	 * Returns number of executed steps.
+	 *
 	 * @return number of executed steps
 	 */
 	public int getSteps() {
@@ -102,6 +104,7 @@ public abstract class AbstractController {
 	
 	/**
 	 * Returns max iteration steps, if reached, algorithm fails.
+	 *
 	 * @return max iteration steps
 	 */
 	public int getMaxSteps() {
@@ -110,6 +113,7 @@ public abstract class AbstractController {
 	
 	/**
 	 * Set max iteration steps, if reached, algorithm fails.
+	 *
 	 * @param maxSteps max iteration steps
 	 */
 	public void setMaxSteps(int maxSteps) {

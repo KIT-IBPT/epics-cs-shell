@@ -89,6 +89,11 @@ public abstract class AbstractCyclingApplication extends AbstractApplication {
 	public static final String DEVICE_FINAL_VALUE 	= "Device:FinalValue";
 	
 	
+	/**
+	 * Constructor.
+	 */
+	public AbstractCyclingApplication() {
+	}
 	
 	/**
 	 * <p>getCyclingParameters.</p>

@@ -23,6 +23,12 @@ import gov.aps.jca.dbr.DBRType;
 public class EPICSUtilitiesTest {
 
 	/**
+	 * Constructor.
+	 */
+	public EPICSUtilitiesTest() {
+	}
+	
+	/**
 	 * Test.
 	 */
 	@Test

@@ -7,6 +7,8 @@ package org.scictrl.csshell;
  * a change of value, an error, ...
  *
  * @author igor@scictrl.com
+ * 
+ * @param <C> connector implementation
  */
 public interface Response<C extends AbstractConnector<?>>
 {

@@ -13,4 +13,6 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ DummyStateMachineTest.class, SequenceStateMachineTest.class })
 public class AllTests {
 
+	private AllTests() {
+	}
 }

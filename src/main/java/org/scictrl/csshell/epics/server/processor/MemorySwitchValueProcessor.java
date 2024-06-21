@@ -14,7 +14,7 @@ import gov.aps.jca.dbr.Severity;
 import gov.aps.jca.dbr.Status;
 
 /**
- * Value processor, which sets forward PVs to off/on, remembers of forward PV was OOn before switching on and keeps that state. 
+ * Value processor, which sets forward PVs to off/on, remembers of forward PV was OOn before switching on and keeps that state.
  *
  * @author igor@scictrl.com
  */

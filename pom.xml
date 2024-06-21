@@ -31,16 +31,18 @@
     <!-- Use command line to incluse tests -DskipTests=false -->
     <skipTests>true</skipTests>
    
+    <csshellSource>https://scm.ibpt.kit.edu/scm/svn/kara/java/KARA-CS-Shell/trunk</csshellSource>
     <csshellLink>https://share.flute.ibpt.kit.edu/smbshare/Controlsystem/Maven/site/csshell/</csshellLink>
-    <fluteCsshellLink>https://share.flute.ibpt.kit.edu/smbshare/Controlsystem/Maven/site/flute-csshell/</fluteCsshellLink>
+    <csshellLinkFlute>https://share.flute.ibpt.kit.edu/smbshare/Controlsystem/Maven/site/flute-csshell/</csshellLinkFlute>
   </properties>
   
   <profiles>
     <profile>
       <id>github</id>
       <properties>
+        <csshellSource>https://github.com/KIT-IBPT/epics-cs-shell</csshellSource>
         <csshellLink>https://kit-ibpt.github.io/epics-cs-shell/</csshellLink>
-        <fluteCsshellLink>https://kit-ibpt.github.io/epics-cs-shell-flute/</fluteCsshellLink>
+        <csshellLinkFlute>https://kit-ibpt.github.io/epics-cs-shell/</csshellLinkFlute>
       </properties>
       <distributionManagement>
         <site>
@@ -69,6 +71,9 @@
       <resource>
         <directory>src/main/java</directory>
         <filtering>false</filtering>
+        <excludes>
+          <exclude>org.scictrl.csshell.epics.casperr.*</exclude>
+        </excludes>
       </resource>
       <resource>
         <directory>src/main/resources</directory>

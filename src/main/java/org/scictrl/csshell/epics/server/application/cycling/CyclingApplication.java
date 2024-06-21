@@ -31,6 +31,12 @@ public class CyclingApplication extends AbstractCyclingApplication {
 	 */
 	protected RampingThread cycler;
 
+
+	/**
+	 * Constructor.
+	 */
+	public CyclingApplication() {
+	}
 	
 	/** {@inheritDoc} */
 	@Override

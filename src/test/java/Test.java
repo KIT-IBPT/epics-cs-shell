@@ -43,8 +43,9 @@ public class Test {
 			e.printStackTrace();
 		}
 		
-		
-		
+	}
+	
+	private Test() {
 	}
 
 }

@@ -13,6 +13,12 @@ import org.scictrl.csshell.epics.server.processor.RunningAverageValueProcessor.R
 public class RunningAverageBufferCalculatorTest {
 
 	/**
+	 * Constructor.
+	 */
+	public RunningAverageBufferCalculatorTest() {
+	}
+	
+	/**
 	 * Test.
 	 */
 	@Test

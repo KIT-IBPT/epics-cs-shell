@@ -269,6 +269,7 @@ public abstract class StateMachine extends AbstractApplication {
 
 	/**
 	 * <p>Activates state machine. If this state machine is in dry-run mode or dry-run parameter with <code>true</code> is called, then this step is activate in dry-run mode.</p>
+	 *
 	 * @param dryrun dry-run mode request
 	 */
 	public void stateMachineActivate(final boolean dryrun) {
@@ -400,6 +401,7 @@ public abstract class StateMachine extends AbstractApplication {
 	
 	/**
 	 * If <code>true</code> sequence should abort if this step fails.
+	 *
 	 * @return if <code>true</code> sequence should abort if this step fails
 	 */
 	public boolean isAbortOnFail() {
@@ -407,7 +409,8 @@ public abstract class StateMachine extends AbstractApplication {
 	}
 	
 	/**
-	 * If not enabled, sequence executor will skip this step. 
+	 * If not enabled, sequence executor will skip this step.
+	 *
 	 * @return is enabled
 	 */
 	public boolean isEnabled() {
@@ -423,6 +426,7 @@ public abstract class StateMachine extends AbstractApplication {
 	
 	/**
 	 * Sets enabled flag, if it is enabledFixed on, then fixed value is set, otherwise enable PV.
+	 *
 	 * @param b new enable flag
 	 */
 	public void setEnabled(boolean b) {
@@ -434,6 +438,7 @@ public abstract class StateMachine extends AbstractApplication {
 	
 	/**
 	 * If this step is in dru-run mode, this means that when activated pretends that actions has been successfully completed without actually doing something.
+	 *
 	 * @return if this step is in dru-run mode
 	 */
 	public boolean isDryRun() {

@@ -71,5 +71,8 @@ public class AlarmMonitor {
 		
 		System.out.println("Exit");
 	}
+	
+	private AlarmMonitor() {
+	}
 
 }

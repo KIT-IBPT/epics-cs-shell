@@ -76,7 +76,12 @@ public class ServerTest {
 	private EPICSConnector connector;
 	
 	
-
+	/**
+	 * Constructor.
+	 */
+	public ServerTest() {
+	}
+	
 	/**
 	 * <p>setUp.</p>
 	 *

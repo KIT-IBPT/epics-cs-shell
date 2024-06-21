@@ -8,6 +8,8 @@ import java.util.Iterator;
  * objects implement the <code>Response</code> interface.
  *
  * @author igor@scictrl.com
+ * 
+ * @param <C> connector implementation
  */
 public interface Request<C extends AbstractConnector<?>> extends Iterable<Response<C>>
 {

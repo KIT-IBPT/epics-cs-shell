@@ -144,7 +144,11 @@ public class ITestCyclingApplication extends AbstractCyclingApplication {
 
 	private Operator cycler=null;
 
-	
+	/**
+	 * Constructor.
+	 */
+	public ITestCyclingApplication() {
+	}
 	
 	/** {@inheritDoc} */
 	@Override

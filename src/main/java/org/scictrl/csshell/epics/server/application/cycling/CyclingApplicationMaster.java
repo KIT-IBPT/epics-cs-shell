@@ -63,7 +63,12 @@ public class CyclingApplicationMaster extends AbstractApplication {
 	private static final String CYCLE = "Cycle";
 	private static final String ABORT = "Abort";
 	
-	
+
+	/**
+	 * Constructor.
+	 */
+	public CyclingApplicationMaster() {
+	}
 	
 	/**
 	 * <p>getCyclingParameters.</p>

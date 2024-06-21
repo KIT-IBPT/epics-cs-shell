@@ -22,10 +22,9 @@ import gov.aps.jca.dbr.Status;
  * <p>Value processor, which connects to provided remote names and captures their value.
  * By default first value from array of linked values is used. Implementation can extend this behavior.
  * To implement own processing of linked values, then override the {@link #processInput(ValueHolder[])} method. </p>
- * 
- * <p>Link works in both ways, setting this processor forwards value to remote link as well. 
+ *
+ * <p>Link works in both ways, setting this processor forwards value to remote link as well.
  * Polynomial transformation can be used to convert value in both directions.</p>
- * 
  *
  * @author igor@scictrl.com
  */

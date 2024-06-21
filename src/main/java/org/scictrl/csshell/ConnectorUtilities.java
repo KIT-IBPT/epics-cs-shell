@@ -240,6 +240,9 @@ public final class ConnectorUtilities
 	
 	private static Logger logger;
 	
+	private ConnectorUtilities() {
+	}
+	
 }
 
 /* __oOo__ */

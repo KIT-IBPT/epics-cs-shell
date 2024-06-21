@@ -21,6 +21,12 @@ import org.scictrl.csshell.epics.server.application.control.ProbePoint;
 public class ThreePointOptimizerTest {
 
 	/**
+	 * Constructor.
+	 */
+	public ThreePointOptimizerTest() {
+	}
+
+	/**
 	 * SetUp
 	 *
 	 * @throws java.lang.Exception failed

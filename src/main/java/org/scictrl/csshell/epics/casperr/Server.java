@@ -71,4 +71,10 @@ public class Server extends DefaultServerImpl {
 	public void addPropertyChangeListener(String name, PropertyChangeListener l) {
 		support.addPropertyChangeListener(name, l);
 	}
+	
+	/**
+	 * <p>Constructor for Server.</p>
+	 */
+	public Server() {
+	}
 }

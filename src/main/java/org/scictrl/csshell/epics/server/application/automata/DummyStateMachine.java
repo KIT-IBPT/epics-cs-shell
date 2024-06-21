@@ -100,6 +100,7 @@ public class DummyStateMachine extends StateMachine {
 		setState(State.INACTIVE);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void stateMachinePrepare() {
 		super.stateMachinePrepare();

@@ -19,5 +19,8 @@ public class Time {
 		System.out.println(new Date(1347377833106L));
 
 	}
+	
+	private Time() {
+	}
 
 }

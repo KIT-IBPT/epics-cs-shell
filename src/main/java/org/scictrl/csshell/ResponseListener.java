@@ -14,6 +14,8 @@ import java.util.EventListener;
  * notification is being delivered for that specific request.
  *
  * @author igor@scictrl.com
+ * 
+ * @param <C> connector implementation
  */
 public interface ResponseListener<C extends AbstractConnector<?>> extends EventListener
 {

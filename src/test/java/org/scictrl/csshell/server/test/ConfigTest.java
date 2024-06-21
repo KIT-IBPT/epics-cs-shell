@@ -39,6 +39,12 @@ public class ConfigTest {
 	private String host;
 
 	/**
+	 * Constructor.
+	 */
+	public ConfigTest() {
+	}
+	
+	/**
 	 * <p>setUp.</p>
 	 *
 	 * @throws java.lang.Exception if fails

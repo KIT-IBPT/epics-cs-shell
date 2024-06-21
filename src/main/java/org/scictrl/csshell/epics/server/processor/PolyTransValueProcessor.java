@@ -20,12 +20,10 @@ import gov.aps.jca.dbr.Status;
  * Value processor, which connects to provided remote names and uses polynomial transformation.
  * By default first value from array of linked values is used.
  *
- *
  * @deprecated Functionality of polynomial transformation has been moved to LinkedValueProcessor and is further mentained there in superior form.
- * 
  * @author igor@scictrl.com
  */
-@Deprecated 
+@Deprecated
 public class PolyTransValueProcessor extends MemoryValueProcessor implements PropertyChangeListener {
 
 	/**

@@ -178,6 +178,8 @@ public final class Tools {
 		return FORMAT_dMHmsS.format(new Date());
 	}
 
+	private Tools() {
+	}
 
 }
 

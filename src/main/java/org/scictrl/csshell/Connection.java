@@ -10,6 +10,10 @@ import java.beans.PropertyChangeListener;
  * Rquired generics: C - Connector, T - data type, V - vector delivering value, such as DBR.
  *
  * @author igor@scictrl.com
+ * 
+ * @param <C> connector implementation
+ * @param <T> data type
+ * @param <V> vector delivering value, such as DBR
  */
 public interface Connection<C extends AbstractConnector<?>,T,V> {
 	

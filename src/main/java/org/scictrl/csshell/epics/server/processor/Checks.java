@@ -19,6 +19,8 @@ import gov.aps.jca.dbr.Status;
  * <p>Checks class.</p>
  *
  * @author igor@scictrl.com
+ * 
+ * @param <A> use either {@link Check} or {@link LinkCheck}, any other class will cause errors
  */
 public final class Checks<A> {
 
@@ -310,7 +312,7 @@ public final class Checks<A> {
 	/**
 	 * Utilizes checks with link, obtains remote value and does condition test.
 	 */
-	public static class LinkCheck {
+	public static final class LinkCheck {
 		ValueLinks link;
 		private PropertyChangeListener listener;
 		Check check;

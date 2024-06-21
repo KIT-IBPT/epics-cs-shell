@@ -415,15 +415,21 @@ public class EPICSConnector extends AbstractConnector<EPICSConnection<?>> implem
 	/**
 	 * Create new EPICS plug instance.
 	 *
-	 * @param configuration a {@link java.util.Properties} object
-	 * @throws org.scictrl.csshell.RemoteException if initialization of remote context fails
-	 * @return a {@link org.scictrl.csshell.epics.EPICSConnector} object
+	 * @param configuration a {@link Properties} object
+	 * @throws RemoteException if initialization of remote context fails
+	 * @return a {@link EPICSConnector} object
 	 */
 	public static synchronized EPICSConnector newInstance(Properties configuration) throws RemoteException {
 		return (EPICSConnector)getInstance(configuration);
 	}
 	
-	/** {@inheritDoc} */
+	/**
+	 * Create new EPICS plug instance.
+	 * 
+	 * @param configuration a {@link Properties} object
+	 * @throws RemoteException if initialization of remote context fails
+	 * @return a {@link EPICSConnector} object
+	 */
 	public static synchronized AbstractConnector<?> getInstance(Properties configuration) throws RemoteException {
 		return new EPICSConnector(configuration);
 	}

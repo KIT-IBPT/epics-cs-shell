@@ -24,7 +24,7 @@ import gov.aps.jca.dbr.Status;
  * <p>
  * RunningCounterApplication calculates average of input value updates based on defined time window. Valid values are accepted into calculation, based on strict or relaxed option.
  * </p>
- * 
+ *
  * <p>
  * If newest value timestamp is newer than current time minus time interval, then interval is set from newest timestamp. This helps counter if there is time shift between timestamps and local clock and if updates are fairly irregular.
  * If newest recorded timestamp is older than current time minus interval, then it is taken out.
@@ -74,6 +74,12 @@ public class RunningCounterApplication extends AbstractApplication {
 		 * Last data timestamp.
 		 */
 		public long last;
+
+		/** 
+		 * Constructor.
+		 */
+		public AverageCalculator() {
+		}
 		
 		/**
 		 * Adds new value to the data pool.

@@ -13,4 +13,6 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ ConfigTest.class, ServerTest.class, SingleConnectionTest.class, PersistencyStoreTest.class})
 public class AllTests {
 
+	private AllTests() {
+	}
 }

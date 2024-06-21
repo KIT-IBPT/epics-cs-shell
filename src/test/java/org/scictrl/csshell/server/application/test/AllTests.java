@@ -17,4 +17,6 @@ import org.junit.runners.Suite.SuiteClasses;
 	RunningCounterApplicationTest.class})
 public class AllTests {
 
+	private AllTests() {
+	}
 }

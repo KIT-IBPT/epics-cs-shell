@@ -34,6 +34,12 @@ public class SequenceStateMachineTest extends AbstractSimpleServerTest {
 	private SequenceStateMachine ssm;
 	
 	/**
+	 * Constructor.
+	 */
+	public SequenceStateMachineTest() {
+	}
+	
+	/**
 	 * <p>assertStateMachine.</p>
 	 *
 	 * @param progress a double

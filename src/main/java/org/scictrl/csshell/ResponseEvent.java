@@ -16,6 +16,9 @@ import java.util.EventObject;
  * functions specific to the underlying implementation.</p>
  *
  * @author igor@scictrl.com
+ * 
+ * @param <C> connector implementation
+ * 
  */
 public class ResponseEvent<C extends AbstractConnector<?>> extends EventObject
 {

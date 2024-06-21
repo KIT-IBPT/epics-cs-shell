@@ -50,6 +50,12 @@ public class AbstractSimpleServerTest {
 	protected EPICSConnector connector;
 	
 	
+	/**
+	 * Constructor.
+	 */
+	public AbstractSimpleServerTest() {
+	}
+	
 
 	/**
 	 * <p>setUp.</p>

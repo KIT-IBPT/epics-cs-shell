@@ -34,6 +34,12 @@ public class EmbeddedApplicationServerTest {
 	EmbeddedApplicationServer s2;
 
 	/**
+	 * Constructor.
+	 */
+	public EmbeddedApplicationServerTest() {
+	}
+
+	/**
 	 * <p>setUp.</p>
 	 *
 	 * @throws java.lang.Exception if any.

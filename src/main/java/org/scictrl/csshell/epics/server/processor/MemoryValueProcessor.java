@@ -159,7 +159,7 @@ public class MemoryValueProcessor extends AbstractValueProcessor {
 	}
 
 	/**
-	 * Internal set: sets new value to this processor. 
+	 * Internal set: sets new value to this processor.
 	 * It checks if it is fixed, it never sets fixed value.
 	 * Fires value update event only if value was changes and notify is true.
 	 * If value was not changed, update is not forced.

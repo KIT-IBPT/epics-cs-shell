@@ -1,6 +1,6 @@
-# EPICS CS-Shell Java Server
+# EPICS CS-Shell EPICS Application Server
 
-The CS-Shell is EPICS business logic server, which provides easy way to implement server side logic in Java and offer it to various application through EPICS and CA interface and communication protocol. 
+The CS-Shell is EPICS application server, which provides easy way to implement server side logic in Java and offer it to various application through EPICS and CA interface and communication protocol. 
 
 It has similar role as EPICS Database has for IOC, yet does not replaces it. 
 

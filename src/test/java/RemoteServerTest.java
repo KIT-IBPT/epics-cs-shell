@@ -51,7 +51,11 @@ public class RemoteServerTest {
 
 	private EPICSConnector connector;
 	
-	
+	/**
+	 * Constructor.
+	 */
+	public RemoteServerTest() {
+	}
 
 	/**
 	 * <p>setUp.</p>

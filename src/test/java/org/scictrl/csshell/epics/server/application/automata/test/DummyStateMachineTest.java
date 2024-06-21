@@ -28,6 +28,13 @@ public class DummyStateMachineTest extends AbstractSimpleServerTest {
 	String pvProgress=appName+":Progress";
 	private DummyStateMachine dsm;
 	
+	
+	/**
+	 * Constructor.
+	 */
+	public DummyStateMachineTest() {
+	}
+
 	/**
 	 * {@inheritDoc}
 	 *
